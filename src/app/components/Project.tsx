@@ -86,7 +86,7 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     return (
-        <Card sx={{ bgcolor: "#000000" }}>
+        <Card sx={{ bgcolor: "#000000", pt: 2 }}>
             <CardHeader
                 avatar={
                     <Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" sx={{ bgcolor: 'success' }} aria-label="icon">

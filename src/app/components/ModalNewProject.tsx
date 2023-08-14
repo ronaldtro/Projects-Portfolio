@@ -1,7 +1,7 @@
 import { Box, Modal, Typography, Stack, Button, TextField } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { modalService } from '../services/modal.service';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addProject } from '../redux/states/projects';
 import {Project} from '../models/Project';
 import {v4 as uuidv4} from 'uuid';
@@ -28,7 +28,7 @@ const ModalNewProject = () => {
         modalService.setProjectSubject(false);
     };
 
-    const handleAddProject = (e:any) => {
+    const handleAddProject = async (e:any) => {
         e.preventDefault();
         
         const project:Project = {
@@ -40,8 +40,18 @@ const ModalNewProject = () => {
         }
 
         dispatch(addProject(project));
+
+        const addProjectResp = await fetch('api/projects', {
+            method: 'POST',
+            headers: {"Content-type": "application/json"},
+            body: JSON.stringify(project)
+        })
+
+        const {msg} = await addProjectResp.json();
+        console.log(msg);
+        
         modalService.setProjectSubject(false);
-        console.log(project);
+
     };
 
     //Estilos del modal

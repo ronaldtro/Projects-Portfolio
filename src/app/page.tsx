@@ -14,20 +14,18 @@ import { configStore } from "./redux/store";
 
 export default function Home() {
   return (
-    <>
+    <div>
       <Provider store={configStore}>
         <Navbar />
-        <Divider sx={{bgcolor: "#1E1E1E"}} />
-        <Histories />
-        <Divider sx={{bgcolor: "#1E1E1E"}} />
+        <Divider sx={{ bgcolor: "#1E1E1E" }} />
         <Projects />
-        <Divider sx={{bgcolor: "#1E1E1E"}} />
+        <Divider sx={{ bgcolor: "#1E1E1E" }} />
         <ModalBox />
         <ModalShowMessages />
         <ModalNewMessage />
         <ModalNewProject />
         <Footer />
       </Provider>
-    </>
+    </div>
   )
 }

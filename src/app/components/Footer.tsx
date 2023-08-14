@@ -17,30 +17,23 @@ const Footer = () => {
     };
 
     return (
-        <>
-            <Paper>
+        <Box mt={10}>
+            <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}} elevation={3}>
                 <BottomNavigation
                     value={value}
                     onChange={(_event: any, newValue: SetStateAction<number>) => {
                         setValue(newValue);
                     }}
-                    sx={{ bgcolor: "#000000", py: 4, color: "#000000" }}
+                    sx={{ bgcolor: "#000000", py: 5, color: "#000000" }}
                 >
                     <BottomNavigationAction label={<Typography variant="body2" color="white" aria-label="inicioText" sx={{ color: "#FFFFFF" }}>Mis proyectos</Typography>} icon={<HomeIcon sx={{ color: "#FFFFFF" }} />} />
                     <BottomNavigationAction label={<Typography variant="body2" color="white" aria-label="inicioText" sx={{ color: "#FFFFFF" }}>Mis proyectos</Typography>} icon={<SearchIcon sx={{ color: "#FFFFFF" }} />} />
                     <BottomNavigationAction label={<Typography variant="body2" color="white" aria-label="inicioText" sx={{ color: "#FFFFFF" }}>Mis proyectos</Typography>} icon={<AddBoxOutlinedIcon sx={{ color: "#FFFFFF" }} />} />
                     <BottomNavigationAction label={<Typography variant="body2" color="white" aria-label="inicioText" sx={{ color: "#FFFFFF" }}>Mis proyectos</Typography>} icon={<MovieFilterOutlinedIcon sx={{ color: "#FFFFFF" }} />} />
-                    <IconButton onClick={handleOpen}>
-                        <Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" sx={{ width: 45, height: 42, mb: 1.5 }} />
-                    </IconButton>
+                    <BottomNavigationAction onClick={handleOpen} label="" icon={<Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" />} sx={{ color: "#FFFFFF" }} />
                 </BottomNavigation>
-
             </Paper>
-
-
-
-        </>
-
+        </Box>
     );
 
 };
