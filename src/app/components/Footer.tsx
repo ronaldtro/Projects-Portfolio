@@ -27,9 +27,9 @@ const Footer = () => {
                     sx={{ bgcolor: "#000000", py: 5, color: "#000000" }}
                 >
                     <BottomNavigationAction label={<Typography variant="body2" color="white" aria-label="inicioText" sx={{ color: "#FFFFFF" }}>Mis proyectos</Typography>} icon={<HomeIcon sx={{ color: "#FFFFFF" }} />} />
-                    <BottomNavigationAction label={<Typography variant="body2" color="white" aria-label="inicioText" sx={{ color: "#FFFFFF" }}>Mis proyectos</Typography>} icon={<SearchIcon sx={{ color: "#FFFFFF" }} />} />
-                    <BottomNavigationAction label={<Typography variant="body2" color="white" aria-label="inicioText" sx={{ color: "#FFFFFF" }}>Mis proyectos</Typography>} icon={<AddBoxOutlinedIcon sx={{ color: "#FFFFFF" }} />} />
-                    <BottomNavigationAction label={<Typography variant="body2" color="white" aria-label="inicioText" sx={{ color: "#FFFFFF" }}>Mis proyectos</Typography>} icon={<MovieFilterOutlinedIcon sx={{ color: "#FFFFFF" }} />} />
+                    <BottomNavigationAction label={<Typography variant="body2" color="white" aria-label="inicioText" sx={{ color: "#FFFFFF" }}></Typography>} icon={<SearchIcon sx={{ color: "#FFFFFF" }} />} />
+                    <BottomNavigationAction label={<Typography variant="body2" color="white" aria-label="inicioText" sx={{ color: "#FFFFFF" }}></Typography>} icon={<AddBoxOutlinedIcon sx={{ color: "#FFFFFF" }} />} />
+                    <BottomNavigationAction label={<Typography variant="body2" color="white" aria-label="inicioText" sx={{ color: "#FFFFFF" }}></Typography>} icon={<MovieFilterOutlinedIcon sx={{ color: "#FFFFFF" }} />} />
                     <BottomNavigationAction onClick={handleOpen} label="" icon={<Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" />} sx={{ color: "#FFFFFF" }} />
                 </BottomNavigation>
             </Paper>
