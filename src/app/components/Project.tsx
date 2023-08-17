@@ -174,7 +174,7 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
                     aria-expanded={expanded}
                     aria-label="show more"
                 >
-                    <ExpandMoreIcon sx={{ color: "#FFFFFF" }} />
+                    Stack <ExpandMoreIcon sx={{ color: "#FFFFFF" }} />
                 </ExpandMore>
                 <IconButton>
                     <BookmarkBorderIcon sx={{ color: "#FFFFFF" }} />
