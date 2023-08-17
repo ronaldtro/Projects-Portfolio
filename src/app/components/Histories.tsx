@@ -18,7 +18,7 @@ const Histories = () => {
     //Obtener proyectos
     useEffect(() => {
         const getProjects = async () => {
-            const projects = await fetch('http://localhost:3000/api/projects');
+            const projects = await fetch(`${process.env.SERVER_PROD}/api/projects`);
             const { msg } = await projects.json();
             dispatch(addProjects(msg));
         }
@@ -62,7 +62,7 @@ const Histories = () => {
 
         if (user == "admin") {
             try {
-                const deleteProject = await fetch(`api/projects?id=${project._id}`, {
+                const deleteProject = await fetch(`${process.env.SERVER_PROD}/projects?id=${project._id}`, {
                     method: 'DELETE',
                     headers: { "Content-type": "application/json" }
                 });

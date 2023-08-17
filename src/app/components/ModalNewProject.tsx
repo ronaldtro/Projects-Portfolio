@@ -42,7 +42,7 @@ const ModalNewProject = () => {
 
         try{
 
-            const addProjectResp = await fetch('api/projects', {
+            const addProjectResp = await fetch(`${process.env.SERVER_PROD}/api/projects`, {
                 method: 'POST',
                 headers: {"Content-type": "application/json"},
                 body: JSON.stringify(project)

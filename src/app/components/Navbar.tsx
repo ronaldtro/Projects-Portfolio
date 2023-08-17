@@ -30,7 +30,7 @@ const Navbar = () => {
   //Obtener mensajes
   useEffect(() => {
     const getMessages = async () => {
-      const messages = await fetch('http://localhost:3000/api/messages');
+      const messages = await fetch(`${process.env.SERVER_PROD}/api/messages`);
       const { msg } = await messages.json();
       dispatch(addMessages(msg));
     }

@@ -46,7 +46,7 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
     //Cargar likes de la db
     useEffect(() => {
         const getLikes = async () => {
-            const likes = await fetch('http://localhost:3000/api/likes');
+            const likes = await fetch(`${process.env.SERVER_PROD}/api/likes`);
             const {msg} = await likes.json();
 
             //Estado del like
@@ -81,7 +81,7 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
 
             if (!likes.some((l:any) => (l.projectId == like.projectId && l.userId == like.userId))) {
                 try{
-                    const addLikeDb = await fetch('api/likes', {
+                    const addLikeDb = await fetch(`${process.env.SERVER_PROD}/api/likes`, {
                         method: 'POST',
                         headers: {"Content-type": "application/json"},
                         body: JSON.stringify(like)
