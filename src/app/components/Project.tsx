@@ -43,6 +43,7 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
     const [expanded, setExpanded] = useState<boolean>(false);
     const [checkFavorite, setCheckFavorite] = useState(false);
 
+
     //Cargar likes de la db
     useEffect(() => {
         const getLikes = async () => {
@@ -148,7 +149,7 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
                 component="img"
                 height="380"
                 sx={{ px: 1.5 }}
-                image="https://mui.com/static/images/cards/paella.jpg"
+                image={ proyecto.projectId == "nojoda1" ? "../assets/monitoriasUnimagGif.gif" : proyecto.projectId == "nojoda2" ? "../assets/monitoriasUnimagGif.gif" : "https://mui.com/static/images/cards/paella.jpg"}
                 alt="Paella dish"
             />
             <CardContent>
