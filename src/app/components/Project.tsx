@@ -149,7 +149,7 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
                 component="img"
                 height="380"
                 sx={{ px: 1.5 }}
-                src={ proyecto.projectId == "e7d9ad09-6ad9-4af8-85c6-62ac9d018791" ? "https://raw.githubusercontent.com/ronaldtro/imagenes/main/monitoriasUnimagGif.gif" : proyecto.projectId == "nojoda2" ? "../assets/monitoriasUnimagGif.gif" : "https://mui.com/static/images/cards/paella.jpg"}
+                src={ proyecto.projectId == "e7d9ad09-6ad9-4af8-85c6-62ac9d018791" ? "https://raw.githubusercontent.com/ronaldtro/imagenes/main/monitoriasUnimagGif.gif" : proyecto.projectId == "61150304-df41-408e-9468-c7388aaff20b" ? "https://raw.githubusercontent.com/ronaldtro/imagenes/main/toDoNextGif.gif" : "https://mui.com/static/images/cards/paella.jpg"}
                 alt="Paella dish"
             />
             <CardContent>
@@ -174,8 +174,8 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
                     aria-expanded={expanded}
                     aria-label="show more"
                 >
-                    <Typography variant="body2" color="white">
-                        Stack
+                    <Typography variant="body2" color="primary">
+                        Stack usado
                     </Typography> 
                     <ExpandMoreIcon sx={{ color: "#FFFFFF" }} />
                 </ExpandMore>
