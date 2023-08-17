@@ -18,7 +18,7 @@ const Histories = () => {
     //Obtener proyectos
     useEffect(() => {
         const getProjects = async () => {
-            const projects = await fetch(`${process.env.SERVER_PROD}/api/projects`);
+            const projects = await fetch(`/api/projects`);
             const { msg } = await projects.json();
             dispatch(addProjects(msg));
         }

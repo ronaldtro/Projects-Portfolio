@@ -41,7 +41,7 @@ export const ModalNewMessage = () => {
         }
 
         try {
-            const addMessageDb = await fetch(`${process.env.SERVER_PROD}/api/messages`, {
+            const addMessageDb = await fetch(`/api/messages`, {
                 method: 'POST',
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify(message)

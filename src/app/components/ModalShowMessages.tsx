@@ -48,7 +48,7 @@ const ModalShowMessages = () => {
         e.preventDefault();
 
         try{
-            const deleteLike = await fetch(`${process.env.SERVER_PROD}/api/messages?id=${id}`, {
+            const deleteLike = await fetch(`/api/messages?id=${id}`, {
                 method: 'DELETE',
                 headers: {"Content-type": "application/json"}
             });
