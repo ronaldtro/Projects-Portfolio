@@ -1,7 +1,7 @@
 'use client';
 
 import { Divider } from "@mui/material";
-import { Provider } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import Footer from "./components/Footer";
 import Histories from "./components/Histories";
 import ModalBox from "./components/ModalBox";
@@ -13,13 +13,12 @@ import { Projects } from "./components/Projects";
 import { configStore } from "./redux/store";
 
 export default function Home() {
+
   return (
     <div>
       <Provider store={configStore}>
         <Navbar />
-        <Divider sx={{ bgcolor: "#1E1E1E" }} />
         <Projects />
-        <Divider sx={{ bgcolor: "#1E1E1E" }} />
         <ModalBox />
         <ModalShowMessages />
         <ModalNewMessage />

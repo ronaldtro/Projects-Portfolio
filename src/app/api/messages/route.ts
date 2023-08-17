@@ -1,10 +1,9 @@
 import connectDb from "@/app/lib/mongodb";
-import { Project } from "@/app/models/Project";
-import project from "@/app/mongoModels/project";
+import message from "@/app/mongoModels/message";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
-//Guardar un proyecto
+//Guardar un mensaje
 export async function POST(request:any){
 
     const req = await request.json();
@@ -12,10 +11,10 @@ export async function POST(request:any){
     
     try{
         await connectDb();
-        const projectDb = await project.create(req);
+        const messageDb = await message.create(req);
 
         return NextResponse.json({
-            msg: projectDb
+            msg: messageDb
         })
     }catch(error:any){
         if(error instanceof mongoose.Error.ValidationError){
@@ -35,14 +34,14 @@ export async function POST(request:any){
     
 }
 
-//Obtener lista de proyectos
+//Obtener lista de mensajes
 export async function GET(){
     try{
         await connectDb();
-        const projects = await project.find();
-        console.log(projects);
+        const mensajes = await message.find();
+        console.log(mensajes);
         
-        return NextResponse.json({msg: projects});
+        return NextResponse.json({msg: mensajes});
     }catch(error:any){
         if(error instanceof mongoose.Error.ValidationError){
             let errorList = [];
@@ -56,17 +55,17 @@ export async function GET(){
     }
 }
 
-//Borrar un proyecto
+//Borrar un mensaje
 export async function DELETE(request: any) {
     const id = request.nextUrl.searchParams.get("id");
 
     try {
         await connectDb();
-        const deletedProject = await project.findByIdAndDelete(id);
-        console.log("Proyecto " + deletedProject + " Eliminado de la Db");
+        const deletedMessage = await message.findByIdAndDelete(id);
+        console.log("Mensaje " + deletedMessage + " Eliminado de la Db");
 
         return NextResponse.json({
-            msg: "Proyecto eliminado correctamente de la Db"
+            msg: "Mensaje eliminado correctamente de la Db"
         });
 
     } catch (error: any) {

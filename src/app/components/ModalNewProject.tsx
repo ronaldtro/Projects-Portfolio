@@ -1,3 +1,4 @@
+
 import { Box, Modal, Typography, Stack, Button, TextField } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { modalService } from '../services/modal.service';
@@ -39,19 +40,23 @@ const ModalNewProject = () => {
             stack: stack
         }
 
-        dispatch(addProject(project));
+        try{
 
-        const addProjectResp = await fetch('api/projects', {
-            method: 'POST',
-            headers: {"Content-type": "application/json"},
-            body: JSON.stringify(project)
-        })
+            const addProjectResp = await fetch('api/projects', {
+                method: 'POST',
+                headers: {"Content-type": "application/json"},
+                body: JSON.stringify(project)
+            })
+    
+            const {msg} = await addProjectResp.json();
+            
+            dispatch(addProject(msg));
 
-        const {msg} = await addProjectResp.json();
-        console.log(msg);
-        
+        }catch(e:any){
+            console.log("Ha ocurrido un error");
+        }
+
         modalService.setProjectSubject(false);
-
     };
 
     //Estilos del modal

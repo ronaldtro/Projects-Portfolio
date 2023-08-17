@@ -1,3 +1,4 @@
+
 import { Box, IconButton, Modal, Typography, Stack, Divider, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 
@@ -123,7 +124,7 @@ const ModalBox = () => {
                 </Typography>
 
                 <Typography aria-label="PerfilDescription" align="justify" mb={4}>
-                    <FaRegHandSpock /> Hola, mi nombre es Ronald y soy desarrollador frontend. Estoy
+                    <FaRegHandSpock /> Hola, mi nombre es Ronald y soy desarrollador fullStack. Estoy
                     estudiando ingenieria de sistemas donde actualmente me encuentro en proceso de grado,
                     me gusta mucho la tecnologia, la musica, el aprendizaje autodidacta y conocer el mundo.
                 </Typography>
@@ -201,8 +202,6 @@ const ModalBox = () => {
                 <Typography variant="body2" align="center" color="black">ronald.2415@hotmail.com</Typography>
                 <Typography variant="body2" align="center" color="black">Ing. de sistemas</Typography>
                 <Typography variant="body2" align="center" color="black">Ronald C.</Typography>
-
-                <ChildModal />
             </Box>
         </Modal>
     );

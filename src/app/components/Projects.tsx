@@ -6,17 +6,16 @@ import { Project as ProjectModel } from "../models/Project";
 export const Projects = () => {
 
   const projects = useSelector((store: any) => store.projects);
-  console.log(projects);
 
   return (
-    <>
+    <div>
       {projects.length == 0 ? <Typography align="center" aria-label="NoProjects" variant="body1">
         *** No hay proyectos ***</Typography> : projects.map((p: ProjectModel) => (
-          <div>
+          <div key={p.projectId}>
             <Divider sx={{ bgcolor: "#1E1E1E" }} />
             <Project key={p.projectId} proyecto={p} />
           </div>
         ))}
-    </>
+    </div>
   );
 }

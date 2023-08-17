@@ -1,3 +1,4 @@
+
 import { Box, Modal, Typography, Stack, Button, TextField } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { modalService } from '../services/modal.service';
@@ -17,11 +18,10 @@ export const ModalNewMessage = () => {
 
     const openModal$ = modalService.getMessageSubject();
     const dispatch = useDispatch();
-    const user = useSelector((store:any) => store.user);
+    const user = useSelector((store: any) => store.user);
 
     useEffect(() => {
         openModal$.subscribe((estado: boolean) => {
-            console.log(estado);
             setOpen(estado);
         });
     });
@@ -30,20 +30,31 @@ export const ModalNewMessage = () => {
         modalService.setMessageSubject(false);
     };
 
-    const handleMessage = (e: any) => {
+    const handleMessage = async (e: any) => {
         e.preventDefault();
 
         const message: Message = {
             messageId: uuidv4(),
-            userId: user.userId,
+            userId: user,
             subject: subject,
             body: body
         }
 
-        console.log(message);
-        
+        try {
+            const addMessageDb = await fetch('api/messages', {
+                method: 'POST',
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify(message)
+            })
 
-        dispatch(addMessage(message));
+            const { msg } = await addMessageDb.json();
+
+            dispatch(addMessage(msg));
+
+        } catch (e: any) {
+            console.log("Ha ocurrido un error");
+        }
+        
         modalService.setMessageSubject(false);
     };
 
@@ -87,7 +98,7 @@ export const ModalNewMessage = () => {
                     >
                         <TextField value={body} onChange={(e) => setBody(e.target.value)} id="outlined-basic" label="Cuerpo del mensaje" variant="outlined" />
                     </Stack>
-                    
+
                     <Button onClick={handleMessage} variant="outlined">Enviar</Button>
                 </Stack>
             </Box>

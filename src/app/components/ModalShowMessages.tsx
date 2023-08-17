@@ -1,3 +1,5 @@
+
+
 import { Box, Modal, Typography, Stack, Button, TextField, TableContainer, Paper, Table, TableHead, TableBody, TableCell, TableRow, Divider } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { modalService } from '../services/modal.service';
@@ -42,8 +44,21 @@ const ModalShowMessages = () => {
         color: '#000000'
     };
 
-    const handleDeleteMessage = (e: any, messageId: string) => {
-        dispatch(deleteMessage(messageId));
+    const handleDeleteMessage = async (e: any, id: any) => {
+        e.preventDefault();
+
+        try{
+            const deleteLike = await fetch(`api/messages?id=${id}`, {
+                method: 'DELETE',
+                headers: {"Content-type": "application/json"}
+            });
+            const {msg} = await deleteLike.json();
+ 
+        }catch(e:any){
+            console.log("Ha ocurrido un error al eliminar el mensaje de la Db");
+        }
+
+        dispatch(deleteMessage(id));
     };
 
     return (
@@ -77,12 +92,12 @@ const ModalShowMessages = () => {
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
                                         <TableCell component="th" scope="row">
-                                            {m.messageId}
+                                            {m._id}
                                         </TableCell>
                                         <TableCell align="center">{m.userId}</TableCell>
                                         <TableCell align="center">{m.subject}</TableCell>
                                         <TableCell align="center">{m.body}</TableCell>
-                                        <TableCell align="center"><Button onClick={(e) => handleDeleteMessage(e, m.messageId)} color="info">X</Button></TableCell>
+                                        <TableCell align="center"><Button onClick={(e) => handleDeleteMessage(e, m._id)} color="info">X</Button></TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

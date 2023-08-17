@@ -1,3 +1,6 @@
+
+
+
 import { Avatar, Card, CardActions, Checkbox, CardContent, CardHeader, CardMedia, Collapse, IconButton, styled, Typography } from "@mui/material";
 
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
@@ -10,8 +13,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { v4 as uuidv4 } from 'uuid';
 import { Project } from "../models/Project";
 import { useDispatch } from "react-redux";
-import { useState } from 'react';
-import { addLikes, removeLike } from "../redux/states/like";
+import { useEffect, useState } from 'react';
+import { addLike, addLikes, removeLike } from "../redux/states/like";
 import { useSelector } from "react-redux";
 import { Like } from "../models/Like";
 import { modalService } from '../services/modal.service';
@@ -34,51 +37,91 @@ interface projectProps{
 const Project:React.FC<projectProps> = ({proyecto}) => {
 
 
-    //Para expandir cada Card
-    const [expanded, setExpanded] = useState<boolean>(false);
+    const dispatch = useDispatch();
     const likes = useSelector( (store:any) => store.likes);
     const user = useSelector((store:any) => store.user);
-    const [checked, setChecked] = useState( likes.some( (l:Like) => (l.projectId == proyecto.projectId && l.userId == user.userId)) );
-    const dispatch = useDispatch();
+    const [expanded, setExpanded] = useState<boolean>(false);
+    const [checkFavorite, setCheckFavorite] = useState(false);
+
+    //Cargar likes de la db
+    useEffect(() => {
+        const getLikes = async () => {
+            const likes = await fetch('http://localhost:3000/api/likes');
+            const {msg} = await likes.json();
+
+            //Estado del like
+            if(msg.some((l:any) => (l.projectId == proyecto.projectId && l.userId == user))){
+                setCheckFavorite(true);
+            }else{
+                setCheckFavorite(false);
+            }
+
+            dispatch(addLikes(msg));
+        }
+        getLikes();
+    }, []);
+
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
 
-
-
-    const handleLike = ( event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleLike = async ( event: React.ChangeEvent<HTMLInputElement>) => {
 
         if(event.target.checked){
-            setChecked(event.target.checked);
-            console.log("Diste like");
 
-            console.log(user);
-            
+            setCheckFavorite(event.target.checked);
+
             const like: Like = {
                 likeId: uuidv4(),
-                userId: user.userId,
+                userId: user,
                 projectId: proyecto.projectId,
                 tipo: "Proyecto"
             }
-    
-            dispatch(addLikes(like));
+
+            if (!likes.some((l:any) => (l.projectId == like.projectId && l.userId == like.userId))) {
+                try{
+                    const addLikeDb = await fetch('api/likes', {
+                        method: 'POST',
+                        headers: {"Content-type": "application/json"},
+                        body: JSON.stringify(like)
+                    })
+                
+                    const {msg} = await addLikeDb.json();
+                    
+                    dispatch(addLike(msg));
+                }catch(e:any){
+                    console.log("Ha ocurrido un error: "+e);
+                }
+            }
+
         };
 
         if(!event.target.checked){
-            setChecked(event.target.checked);
-            console.log("Quitaste like");
 
-            const like = likes.find( (l:Like) => (l.projectId == proyecto.projectId && l.userId == user.userId) );
+            setCheckFavorite(event.target.checked);
 
-            dispatch(removeLike(like.likeId));
+            const like = likes.find( (l:Like) => (l.projectId == proyecto.projectId && l.userId == user) );
+
+            if(like){
+                try{
+                    const deleteLike = await fetch(`api/likes?id=${like._id}`, {
+                        method: 'DELETE',
+                        headers: {"Content-type": "application/json"}
+                    });
+                    const {msg} = await deleteLike.json();
+
+                }catch(e:any){
+                    console.log("Ha ocurrido un error al eliminar el like de la Db");
+                }
+                dispatch(removeLike(like));
+            }
+
         }
 
     }
 
     const handleModalMessage = (e:any) => {
-        console.log("Activar modal mensaje");
-
         e.preventDefault();
         modalService.setMessageSubject(true);
     };
@@ -115,7 +158,8 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
             </CardContent>
             <CardActions disableSpacing>
 
-                <Checkbox {...label} icon={<FavoriteBorderIcon sx={{ color: "#FFFFFF" }} />} onChange={handleLike} checked={checked} checkedIcon={<FavoriteIcon sx={{ color: "#FFFFFF" }} />} />
+                <Checkbox {...label} icon={<FavoriteBorderIcon sx={{ color: "#FFFFFF" }} />} 
+                          onChange={handleLike} checked={checkFavorite} checkedIcon={<FavoriteIcon sx={{ color: "#FFFFFF" }} />} />
 
                 <IconButton onClick={handleModalMessage} aria-label="share">
                     <ForumIcon sx={{ color: "#FFFFFF" }} />
