@@ -29,6 +29,11 @@ const projectSchema = new Schema(
             required: [true, "Id es requerido"],
             trim: true,
         },
+        imagen: {
+            type: String,
+            required: [true, "Url de la imagen es requerida"],
+            trim: true
+        }
     });
 
 const project = mongoose.models.project || mongoose.model("project", projectSchema);

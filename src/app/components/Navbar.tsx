@@ -55,7 +55,7 @@ const Navbar = () => {
   }
 
   return (
-    <Box sx={{ display: 'flex' }} mb={23}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav" sx={{ bgcolor: '#000000' }}>
         <Toolbar>

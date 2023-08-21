@@ -31,11 +31,12 @@ const ExpandMore = styled((props: any) => {
 }));
 
 interface projectProps{
-    proyecto: Project
+    proyecto: Project,
+    indice: number,
+    indiceMax: number
 }
 
-const Project:React.FC<projectProps> = ({proyecto}) => {
-
+const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
 
     const dispatch = useDispatch();
     const likes = useSelector( (store:any) => store.likes);
@@ -130,7 +131,7 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     return (
-        <Card sx={{ bgcolor: "#000000", pt: 2 }}>
+        <Card sx={{ bgcolor: "#000000", pt: indice == 0 ? 26 : 3, pb: indice == indiceMax ? 10 : 0 }}>
             <CardHeader
                 avatar={
                     <Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" sx={{ bgcolor: 'success' }} aria-label="icon">
@@ -149,7 +150,7 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
                 component="img"
                 height="380"
                 sx={{ px: 1.5 }}
-                src={ proyecto.projectId == "e7d9ad09-6ad9-4af8-85c6-62ac9d018791" ? "https://raw.githubusercontent.com/ronaldtro/imagenes/main/monitoriasUnimagGif.gif" : proyecto.projectId == "61150304-df41-408e-9468-c7388aaff20b" ? "https://raw.githubusercontent.com/ronaldtro/imagenes/main/toDoNextGif.gif" : "https://mui.com/static/images/cards/paella.jpg"}
+                src={proyecto.imagen}
                 alt="Paella dish"
             />
             <CardContent>
@@ -177,7 +178,7 @@ const Project:React.FC<projectProps> = ({proyecto}) => {
                     <Typography variant="body2" color="primary">
                         Stack usado
                     </Typography> 
-                    <ExpandMoreIcon sx={{ color: "#FFFFFF" }} />
+                    <ExpandMoreIcon color="primary" />
                 </ExpandMore>
                 <IconButton>
                     <BookmarkBorderIcon sx={{ color: "#FFFFFF" }} />

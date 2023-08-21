@@ -15,6 +15,7 @@ const ModalNewProject = () => {
     const [fecha, setFecha] = useState<string>("");
     const [descripcion, setDescripcion] = useState<string>("");
     const [stack, setStack] = useState<string>("");
+    const [imagen, setImagen] = useState<string>("");
 
     const openModal$ = modalService.getProjectSubject();
     const dispatch = useDispatch();
@@ -37,7 +38,8 @@ const ModalNewProject = () => {
             nombre: nombre,
             fecha: fecha,
             descripcion: descripcion,
-            stack: stack
+            stack: stack,
+            imagen: imagen
         }
 
         try{
@@ -56,6 +58,11 @@ const ModalNewProject = () => {
             console.log("Ha ocurrido un error");
         }
 
+        setNombre("");
+        setFecha("");
+        setDescripcion("");
+        setStack("");
+        setImagen("");
         modalService.setProjectSubject(false);
     };
 
@@ -109,7 +116,10 @@ const ModalNewProject = () => {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <TextField value={stack} onChange={(e) => setStack(e.target.value)} id="outlined-basic" label="Stack" variant="outlined" sx={{bgcolor: "#FFFFFF", color: "#FFFFFF"}}/>
+                        <TextField value={stack} onChange={(e) => setStack(e.target.value)} id="outlined-basic" label="Stack" variant="outlined" sx={{bgcolor: "#FFFFFF", color: "#FFFFFF"}} />
+                    </Stack>
+                    <Stack justifyContent="center" alignItems="center">
+                        <TextField value={imagen} onChange={(e) => setImagen(e.target.value)} id="imageField" label="Url image" variant="outlined" sx={{bgcolor: "#FFFFFF", color: "#FFFFFF"}} />
                     </Stack>
                     <Button onClick={handleAddProject} variant="outlined">Guardar</Button>
                 </Stack>
