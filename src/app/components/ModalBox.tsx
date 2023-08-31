@@ -124,9 +124,9 @@ const ModalBox = () => {
                 </Typography>
 
                 <Typography aria-label="PerfilDescription" align="justify" mb={4}>
-                    <FaRegHandSpock /> Hola, mi nombre es Ronald y soy desarrollador fullStack. Estoy
-                    estudiando ingenieria de sistemas donde actualmente me encuentro en proceso de grado,
-                    me gusta mucho la tecnologia, la musica, el aprendizaje autodidacta y conocer el mundo.
+                    <FaRegHandSpock /> Hola, mi nombre es Ronald y soy ingeniero de sistemas. Actualmente me dedico al
+                    desarrollo web en el area Frontend. Estoy me gusta mucho la tecnologia, la musica, el aprendizaje autodidacta
+                    y conocer el mundo.
                 </Typography>
 
                 <Stack justifyContent="center" alignItems="center" direction="row" gap={2} mb={0.5}>
