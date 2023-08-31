@@ -125,7 +125,7 @@ const ModalBox = () => {
 
                 <Typography aria-label="PerfilDescription" align="justify" mb={4}>
                     <FaRegHandSpock /> Hola, mi nombre es Ronald y soy ingeniero de sistemas. Actualmente me dedico al
-                    desarrollo web en el area Frontend. Estoy me gusta mucho la tecnologia, la musica, el aprendizaje autodidacta
+                    desarrollo web en el area Frontend. Me gusta mucho la tecnologia, la musica, el aprendizaje autodidacta
                     y conocer el mundo.
                 </Typography>
 
