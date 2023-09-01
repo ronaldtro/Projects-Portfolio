@@ -3,11 +3,12 @@ import { Box, IconButton, Modal, Typography, Stack, Divider, Button } from '@mui
 import { useState, useEffect } from 'react';
 
 import { GrClose } from "react-icons/gr";
-import { FaRegHandSpock, FaBootstrap, FaReact, FaAngular, FaInstagram } from "react-icons/fa";
+import { FaRegHandSpock, FaBootstrap, FaReact, FaAngular, FaInstagram, FaNode } from "react-icons/fa";
 import { BiLogoTailwindCss } from "react-icons/bi";
 import { SiMui } from "react-icons/si";
-import { BsLinkedin, BsGithub } from "react-icons/bs";
+import { BsLinkedin, BsGithub, BsMicrosoft } from "react-icons/bs";
 import { modalService } from '../services/modal.service';
+
 
 function ChildModal() {
 
@@ -124,12 +125,12 @@ const ModalBox = () => {
                 </Typography>
 
                 <Typography aria-label="PerfilDescription" align="justify" mb={4}>
-                    <FaRegHandSpock /> Hola, mi nombre es Ronald y soy ingeniero de sistemas. Actualmente me dedico al
-                    desarrollo web en el area Frontend. Me gusta mucho la tecnologia, la musica, el aprendizaje autodidacta
+                    <FaRegHandSpock /> Hola, mi nombre es Ronald y soy ingeniero de sistemas. Actualmente
+                    me dedico al desarrollo web como fullStack. Me gusta mucho la tecnologia, la musica, el aprendizaje autodidacta
                     y conocer el mundo.
                 </Typography>
 
-                <Stack justifyContent="center" alignItems="center" direction="row" gap={2} mb={0.5}>
+                <Stack justifyContent="center" alignItems="center" direction="row" gap={2} mb={1}>
                     <Stack
                         justifyContent="center"
                         alignItems="center"
@@ -146,6 +147,18 @@ const ModalBox = () => {
                         <FaAngular size={35} />
                         <Typography variant="body2" color="black">
                             Angular
+                        </Typography>
+                    </Stack>
+                    <Stack justifyContent="center" alignItems="center">
+                        <FaNode size={35}/>
+                        <Typography variant="body2" color="black">
+                            NodeJs
+                        </Typography>
+                    </Stack>
+                    <Stack justifyContent="center" alignItems="center">
+                        <BsMicrosoft />
+                        <Typography variant="body2" color="black">
+                            Asp.net core
                         </Typography>
                     </Stack>
                 </Stack>

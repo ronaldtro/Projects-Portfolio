@@ -131,7 +131,7 @@ const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     return (
-        <Card sx={{ bgcolor: "#000000", pt: indice == 0 ? 26 : 3, pb: indice == indiceMax ? 10 : 0 }}>
+        <Card id={proyecto.projectId} sx={{ bgcolor: "#000000", pt: indice == 0 ? 26 : 3, pb: indice == indiceMax ? 10 : 0 }}>
             <CardHeader
                 avatar={
                     <Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" sx={{ bgcolor: 'success' }} aria-label="icon">
