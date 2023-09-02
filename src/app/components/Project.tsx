@@ -171,8 +171,8 @@ const Project: React.FC<projectProps> = ({ proyecto, indice, indiceMax }) => {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                
-                <Stack direction="row" gap={2} justifyContent="center" alignItems="center">
+
+                <Stack direction="row" gap={0.5} justifyContent="center" alignItems="center">
                     <Checkbox {...label} sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }}
                         icon={<FavoriteBorderIcon sx={{ color: "#FFFFFF" }} />}
                         onChange={handleLike} checked={checkFavorite}
