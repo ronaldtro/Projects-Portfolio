@@ -177,10 +177,12 @@ const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
                           onChange={handleLike} checked={checkFavorite} 
                           checkedIcon={<FavoriteIcon sx={{ color: "#FFFFFF" }} />} />
 
-                <IconButton onClick={handleModalMessage} aria-label="sendMessage">
-                    <ForumIcon sx={{ color: "#FFFFFF", border: borderProperties }} />
+                <IconButton onClick={handleModalMessage} aria-label="sendMessage" 
+                            sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }}>
+                    <ForumIcon sx={{ color: "#FFFFFF" }} />
                 </IconButton>
-                <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share">
+                <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share"
+                            sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }}>
                     <SendIcon sx={{ color: "#FFFFFF" }} />
                 </IconButton>
                 <ExpandMore
