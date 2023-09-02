@@ -172,7 +172,7 @@ const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
             </CardContent>
             <CardActions disableSpacing>
 
-                <Checkbox {...label} icon={<FavoriteBorderIcon sx={{ color: "#FFFFFF", border: borderProperties }} />} 
+                <Checkbox {...label} icon={<FavoriteBorderIcon sx={{ color: "#FFFFFF", border: borderProperties, borderRadius: 3 }} />} 
                           onChange={handleLike} checked={checkFavorite} 
                           checkedIcon={<FavoriteIcon sx={{ color: "#FFFFFF" }} />} />
 
