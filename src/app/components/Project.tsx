@@ -1,7 +1,7 @@
 
 
 
-import { Avatar, Card, CardActions, Checkbox, CardContent, CardHeader, CardMedia, Collapse, IconButton, styled, Typography } from "@mui/material";
+import { Avatar, Card, CardActions, Checkbox, CardContent, CardHeader, CardMedia, Collapse, IconButton, styled, Typography, Stack } from "@mui/material";
 
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -30,23 +30,23 @@ const ExpandMore = styled((props: any) => {
     }),
 }));
 
-interface projectProps{
+interface projectProps {
     proyecto: Project,
     indice: number,
     indiceMax: number
 }
 
-const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
+const Project: React.FC<projectProps> = ({ proyecto, indice, indiceMax }) => {
 
     const dispatch = useDispatch();
-    const likes = useSelector( (store:any) => store.likes);
-    const user = useSelector((store:any) => store.user);
+    const likes = useSelector((store: any) => store.likes);
+    const user = useSelector((store: any) => store.user);
 
     const [expanded, setExpanded] = useState<boolean>(false);
     const [checkFavorite, setCheckFavorite] = useState(false);
     const [borderProperties, setBorderProperties] = useState("2px solid #FFFFFF");
 
-    useEffect(() =>  {
+    useEffect(() => {
         setTimeout(() => {
             if (borderProperties == "2px solid #000000") {
                 setBorderProperties("2px solid #FFFFFF");
@@ -61,12 +61,12 @@ const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
     useEffect(() => {
         const getLikes = async () => {
             const likes = await fetch(`/api/likes`);
-            const {msg} = await likes.json();
+            const { msg } = await likes.json();
 
             //Estado del like
-            if(msg.some((l:any) => (l.projectId == proyecto.projectId && l.userId == user))){
+            if (msg.some((l: any) => (l.projectId == proyecto.projectId && l.userId == user))) {
                 setCheckFavorite(true);
-            }else{
+            } else {
                 setCheckFavorite(false);
             }
 
@@ -80,9 +80,9 @@ const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
         setExpanded(!expanded);
     };
 
-    const handleLike = async ( event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleLike = async (event: React.ChangeEvent<HTMLInputElement>) => {
 
-        if(event.target.checked){
+        if (event.target.checked) {
 
             setCheckFavorite(event.target.checked);
 
@@ -93,39 +93,39 @@ const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
                 tipo: "Proyecto"
             }
 
-            if (!likes.some((l:any) => (l.projectId == like.projectId && l.userId == like.userId))) {
-                try{
+            if (!likes.some((l: any) => (l.projectId == like.projectId && l.userId == like.userId))) {
+                try {
                     const addLikeDb = await fetch(`/api/likes`, {
                         method: 'POST',
-                        headers: {"Content-type": "application/json"},
+                        headers: { "Content-type": "application/json" },
                         body: JSON.stringify(like)
                     })
-                
-                    const {msg} = await addLikeDb.json();
-                    
+
+                    const { msg } = await addLikeDb.json();
+
                     dispatch(addLike(msg));
-                }catch(e:any){
-                    console.log("Ha ocurrido un error: "+e);
+                } catch (e: any) {
+                    console.log("Ha ocurrido un error: " + e);
                 }
             }
 
         };
 
-        if(!event.target.checked){
+        if (!event.target.checked) {
 
             setCheckFavorite(event.target.checked);
 
-            const like = likes.find( (l:Like) => (l.projectId == proyecto.projectId && l.userId == user) );
+            const like = likes.find((l: Like) => (l.projectId == proyecto.projectId && l.userId == user));
 
-            if(like){
-                try{
+            if (like) {
+                try {
                     const deleteLike = await fetch(`api/likes?id=${like._id}`, {
                         method: 'DELETE',
-                        headers: {"Content-type": "application/json"}
+                        headers: { "Content-type": "application/json" }
                     });
-                    const {msg} = await deleteLike.json();
+                    const { msg } = await deleteLike.json();
 
-                }catch(e:any){
+                } catch (e: any) {
                     console.log("Ha ocurrido un error al eliminar el like de la Db");
                 }
                 dispatch(removeLike(like));
@@ -135,7 +135,7 @@ const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
 
     }
 
-    const handleModalMessage = (e:any) => {
+    const handleModalMessage = (e: any) => {
         e.preventDefault();
         modalService.setMessageSubject(true);
     };
@@ -171,20 +171,23 @@ const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
+                
+                <Stack direction="row" gap={2} justifyContent="center" alignItems="center">
+                    <Checkbox {...label} sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }}
+                        icon={<FavoriteBorderIcon sx={{ color: "#FFFFFF" }} />}
+                        onChange={handleLike} checked={checkFavorite}
+                        checkedIcon={<FavoriteIcon sx={{ color: "#FFFFFF" }} />} />
 
-                <Checkbox {...label} sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }} 
-                          icon={<FavoriteBorderIcon sx={{ color: "#FFFFFF"}} />} 
-                          onChange={handleLike} checked={checkFavorite} 
-                          checkedIcon={<FavoriteIcon sx={{ color: "#FFFFFF" }} />} />
+                    <IconButton onClick={handleModalMessage} aria-label="sendMessage"
+                        sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }}>
+                        <ForumIcon sx={{ color: "#FFFFFF" }} />
+                    </IconButton>
+                    <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share"
+                        sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }}>
+                        <SendIcon sx={{ color: "#FFFFFF" }} />
+                    </IconButton>
+                </Stack>
 
-                <IconButton onClick={handleModalMessage} aria-label="sendMessage" 
-                            sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }}>
-                    <ForumIcon sx={{ color: "#FFFFFF" }} />
-                </IconButton>
-                <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share"
-                            sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }}>
-                    <SendIcon sx={{ color: "#FFFFFF" }} />
-                </IconButton>
                 <ExpandMore
                     expand={expanded}
                     onClick={handleExpandClick}
@@ -193,7 +196,7 @@ const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
                 >
                     <Typography variant="body2" color="primary">
                         Stack usado
-                    </Typography> 
+                    </Typography>
                     <ExpandMoreIcon color="primary" />
                 </ExpandMore>
                 <IconButton>
