@@ -41,8 +41,20 @@ const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
     const dispatch = useDispatch();
     const likes = useSelector( (store:any) => store.likes);
     const user = useSelector((store:any) => store.user);
+
     const [expanded, setExpanded] = useState<boolean>(false);
     const [checkFavorite, setCheckFavorite] = useState(false);
+    const [borderProperties, setBorderProperties] = useState("2px solid #FFFFFF");
+
+    useEffect(() =>  {
+        setTimeout(() => {
+            if (borderProperties == "2px solid #000000") {
+                setBorderProperties("2px solid #FFFFFF");
+            } else {
+                setBorderProperties("2px solid #000000");
+            }
+        }, 1000);
+    }, [borderProperties]);
 
 
     //Cargar likes de la db
@@ -160,13 +172,14 @@ const Project:React.FC<projectProps> = ({proyecto, indice, indiceMax}) => {
             </CardContent>
             <CardActions disableSpacing>
 
-                <Checkbox {...label} icon={<FavoriteBorderIcon sx={{ color: "#FFFFFF" }} />} 
-                          onChange={handleLike} checked={checkFavorite} checkedIcon={<FavoriteIcon sx={{ color: "#FFFFFF" }} />} />
+                <Checkbox {...label} icon={<FavoriteBorderIcon sx={{ color: "#FFFFFF", border: borderProperties }} />} 
+                          onChange={handleLike} checked={checkFavorite} 
+                          checkedIcon={<FavoriteIcon sx={{ color: "#FFFFFF" }} />} />
 
-                <IconButton onClick={handleModalMessage} aria-label="share">
-                    <ForumIcon sx={{ color: "#FFFFFF" }} />
+                <IconButton onClick={handleModalMessage} aria-label="sendMessage">
+                    <ForumIcon sx={{ color: "#FFFFFF", border: borderProperties }} />
                 </IconButton>
-                <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="send">
+                <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share">
                     <SendIcon sx={{ color: "#FFFFFF" }} />
                 </IconButton>
                 <ExpandMore
