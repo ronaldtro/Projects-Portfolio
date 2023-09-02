@@ -121,11 +121,11 @@ const ModalBox = () => {
                 </Typography>
 
                 <Typography variant="h6" align="center" color="black" mb={3}>
-                    Web Developer
+                    <FaRegHandSpock /> Hola
                 </Typography>
 
                 <Typography aria-label="PerfilDescription" align="justify" mb={4}>
-                    <FaRegHandSpock /> Hola, mi nombre es Ronald y soy ingeniero de sistemas. Actualmente
+                    Mi nombre es Ronald y soy ingeniero de sistemas. Actualmente
                     me dedico al desarrollo web como fullStack. Me gusta mucho la tecnologia, la musica, el aprendizaje autodidacta
                     y conocer el mundo.
                 </Typography>
