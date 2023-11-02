@@ -214,6 +214,7 @@ const ModalBox = () => {
 
                 <Typography variant="body2" align="center" color="black">ronald.2415@hotmail.com</Typography>
                 <Typography variant="body2" align="center" color="black">Ing. de sistemas</Typography>
+                <Typography variant="body2" align="center" color="black">+57 3137395166</Typography>
                 <Typography variant="body2" align="center" color="black">Ronald C.</Typography>
             </Box>
         </Modal>

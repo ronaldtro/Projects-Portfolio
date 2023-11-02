@@ -40,6 +40,11 @@ export const ModalNewMessage = () => {
             body: body
         }
 
+        if( (message.subject || message.body) == ''){
+            alert("Porfavor rellena todos los campos");
+            return;
+        }
+
         try {
             const addMessageDb = await fetch(`/api/messages`, {
                 method: 'POST',
