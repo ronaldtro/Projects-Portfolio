@@ -34,7 +34,7 @@ const Histories = () => {
     const handleAddProject = (e: any) => {
         e.preventDefault();
 
-        if (user == "admin") {
+        if (user == process.env.ADMIN) {
             modalService.setProjectSubject(true);
         } else {
             alert("Lo siento, no eres admin");
@@ -60,7 +60,7 @@ const Histories = () => {
         //     dispatch(removeLike(like._id));
         // }
 
-        if (user == "admin") {
+        if (user == process.env.ADMIN) {
             try {
                 const deleteProject = await fetch(`/api/projects?id=${project._id}`, {
                     method: 'DELETE',

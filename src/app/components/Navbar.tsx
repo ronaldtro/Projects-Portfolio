@@ -46,7 +46,7 @@ const Navbar = () => {
   const handleShowMessages = (e: any) => {
     e.preventDefault();
 
-    if (user == "admin") {
+    if (user == process.env.ADMIN) {
       modalService.setShowMessages(true);
     } else {
       alert("Lo siento, no eres admin");
