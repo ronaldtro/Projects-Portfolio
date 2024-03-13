@@ -1,6 +1,6 @@
 'use client';
 
-import { Divider } from "@mui/material";
+import { Divider, Toolbar } from "@mui/material";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import Footer from "./components/Footer";
 import Histories from "./components/Histories";
@@ -18,11 +18,15 @@ export default function Home() {
     <div>
       <Provider store={configStore}>
         <Navbar />
+        <Toolbar />
+        <Histories />
         <Projects />
         <ModalBox />
         <ModalShowMessages />
         <ModalNewMessage />
         <ModalNewProject />
+        <Toolbar />
+        <Toolbar />
         <Footer />
       </Provider>
     </div>

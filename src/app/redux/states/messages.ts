@@ -1,11 +1,8 @@
 import { Message } from '../../models/Message';
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialMessages = () => {
-    return [];
-}
 
-export const initialStateMessages: Message[] = initialMessages();
+export const initialStateMessages: Message[] = [];
 
 export const messagesSlice = createSlice({
     name: "messages",

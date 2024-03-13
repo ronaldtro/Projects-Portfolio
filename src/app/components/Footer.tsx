@@ -10,8 +10,8 @@ import Fade from '@mui/material/styles';
 
 const Footer = () => {
 
-    //Para la paginacion de la barra baja
-    const [value, setValue] = useState(0);
+    //Para la paginacion de la barra
+    // const [value, setValue] = useState(0);
     const [borderProperties, setBorderProperties] = useState("2px solid #FFFFFF");
 
     const handleOpen = () => {
@@ -30,13 +30,13 @@ const Footer = () => {
 
     return (
         <Box>
-            <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}} elevation={3}>
+            <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}} elevation={1}>
                 <BottomNavigation
-                    value={value}
-                    onChange={(_event: any, newValue: SetStateAction<number>) => {
-                        setValue(newValue);
-                    }}
-                    sx={{ bgcolor: "#000000", py: 5, color: "#000000" }}
+                    // value={value}
+                    // onChange={(_event: any, newValue: SetStateAction<number>) => {
+                    //     setValue(newValue);
+                    // }}
+                    sx={{ bgcolor: "#000000", py: 5 }}
                 >
                     <BottomNavigationAction icon={<HomeIcon sx={{ color: "#FFFFFF" }} />} />
                     <BottomNavigationAction icon={<SearchIcon sx={{ color: "#FFFFFF" }} />} />
