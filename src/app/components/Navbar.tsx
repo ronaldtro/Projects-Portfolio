@@ -16,12 +16,23 @@ import { modalService } from "../services/modal.service";
 import { alertService } from "../services/alert.service";
 //Alert
 import { AlertComponent } from "./AlertComponent";
-
+import {v4 as uuidv4} from "uuid"
+import { addUser } from "../redux/states/user";
 
 
 const Navbar = () => {
 
   const dispatch = useDispatch();
+
+  const userId = localStorage.getItem("userId");
+  if(userId){
+      dispatch(addUser(userId));
+  }else{
+      const newUser = uuidv4();
+      localStorage.setItem("userId", newUser);
+      dispatch(addUser(newUser));
+  }
+
 
   //Obtener de la db y almacenar los mensajes en el manejador de estados.
   useEffect(() => {
