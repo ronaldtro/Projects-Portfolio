@@ -86,7 +86,6 @@ const Navbar = () => {
   }
 
   return (
-
     <AppBar component="nav" sx={{ bgcolor: '#000000' }}>
       <Toolbar>
         <Typography
@@ -110,7 +109,6 @@ const Navbar = () => {
       </Toolbar>
       <AlertComponent />
     </AppBar>
-
   );
 };
 

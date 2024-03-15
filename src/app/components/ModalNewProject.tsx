@@ -14,6 +14,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Swal from 'sweetalert2';
+import { Close } from '@mui/icons-material';
+import { File } from 'buffer';
 
 
 
@@ -26,34 +28,22 @@ const ModalNewProject = () => {
     const [descripcion, setDescripcion] = useState<string>("");
     const [stack, setStack] = useState<string>("");
     const [imagen, setImagen] = useState<string>("");
+    const [imagenSave, setImagenSave] = useState<any>();
+
+    //console.log(imagenSave);
+
+    // const saveFile = (e:any) => {
+    //     console.log(e.target.files[0]);
+    // };
+
     const [isEmptyField, setIsEmptyField] = useState<boolean>(false);
-
-    function MyFormHelperText() {
-        const { onEmpty, variant, required, filled, focused, error } = useFormControl() || {};
-
-        const helperText = useMemo(() => {
-
-            if (!focused) {
-                if (nombre == "") {
-                    return "*Campo vacío";
-                }
-
-                return;
-
-            }
-
-        }, [focused]);
-
-        return <FormHelperText>{helperText}</FormHelperText>;
-
-    }
 
     const openModal$ = modalService.getProjectSubject();
     const dispatch = useDispatch();
 
     const [value, setValue] = useState<Dayjs | null>(null);
 
-    console.log(fecha?.toDate());
+    //console.log(fecha?.toDate());
 
     useEffect(() => {
         openModal$.subscribe((estado: boolean) => {
@@ -62,6 +52,12 @@ const ModalNewProject = () => {
     });
 
     const handleClose = () => {
+        setNombre("");
+        setFecha(null);
+        setDescripcion("");
+        setStack("");
+        setImagen("");
+        setIsEmptyField(false);
         modalService.setProjectSubject(false);
     };
 
@@ -69,7 +65,7 @@ const ModalNewProject = () => {
         e.preventDefault();
 
 
-        if (!nombre || !fecha || !descripcion || !stack || !imagen) {
+        if (!nombre || !fecha || !descripcion || !stack || !imagenSave) {
             setIsEmptyField(true);
             return;
         }
@@ -77,38 +73,51 @@ const ModalNewProject = () => {
         setIsEmptyField(false);
         modalService.setProjectSubject(false);
 
-        const project: Project = {
-            projectId: uuidv4(),
-            nombre: nombre,
-            fecha: fecha?.toString(),
-            descripcion: descripcion,
-            stack: stack,
-            imagen: imagen
-        }
+        //const data =  new Blob([imagenSave?], { type: imagenSave?.type });
 
+        const fd = new FormData();
+        fd.append("projectId", uuidv4());
+        fd.append("imagen", imagenSave);
+        fd.append("nombre", nombre);
+        fd.append("fecha", fecha?.toString());
+        fd.append("descripcion", descripcion);
+        fd.append("stack", stack);
+
+        // const project: Project = {
+        //     projectId: uuidv4(),
+        //     nombre: nombre,
+        //     fecha: fecha?.toString(),
+        //     descripcion: descripcion,
+        //     stack: stack,
+        //     imagen: fd
+        // }
 
         const userConfirm = await confirm();
-        
-        if(!userConfirm){
+
+        if (!userConfirm) {
             setNombre("");
             setFecha(null);
             setDescripcion("");
             setStack("");
             setImagen("");
-            
+
             return;
         }
 
         try {
 
+            // const addProjectResp = await fetch(`/api/projects`, {
+            //     method: 'POST',
+            //     headers: { "Content-type": "application/json" },
+            //     body: JSON.stringify(project)
+            // })
+
             const addProjectResp = await fetch(`/api/projects`, {
                 method: 'POST',
-                headers: { "Content-type": "application/json" },
-                body: JSON.stringify(project)
+                body: fd
             })
 
             const { msg } = await addProjectResp.json();
-
             dispatch(addProject(msg));
 
         } catch (e: any) {
@@ -147,42 +156,49 @@ const ModalNewProject = () => {
             aria-describedby="parent-modal-description"
         >
             <Box sx={{ ...modalStyle, width: 400 }}>
-
-                <Typography variant="h6" align="center" color="black" mb={3}>
+                <Stack direction="row" justifyContent="right" alignItems="center">
+                    <Button onClick={(e) => handleClose()} >
+                        <Close fontSize='large' color='action' />
+                    </Button>
+                </Stack>
+                <Typography variant="h6" align="center" color="black" mb={4}>
                     Nueva historia
                 </Typography>
 
-                <Stack justifyContent="center" alignItems="center" gap={2} mb={0.5}>
+                <Stack gap={3} mb={5}>
 
-                    <Stack
-                        justifyContent="center"
-                        alignItems="center"
-                    >
+                    <Stack>
                         <TextField value={nombre} onChange={(e) => setNombre(e.target.value)} label="Nombre" variant="filled"  {...(((nombre == "") && isEmptyField) ? { error: true } : {})} {...(((nombre == "") && isEmptyField) ? { helperText: "Campo vacío" } : {})} />
                     </Stack>
 
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DemoContainer components={['DatePicker']} >
-                            <DatePicker value={fecha} onChange={(newValue) => setFecha(newValue)} label="Fecha" />
-                        </DemoContainer>
-                    </LocalizationProvider>
+                    <Stack>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DemoContainer components={['DatePicker']} >
+                                <DatePicker value={fecha} onChange={(newValue) => setFecha(newValue)} label="Fecha" />
+                            </DemoContainer>
+                        </LocalizationProvider>
+                    </Stack>
 
-                    <Stack
-                        justifyContent="center"
-                        alignItems="center"
-                    >
+                    <Stack>
                         <TextField value={descripcion} onChange={(e) => setDescripcion(e.target.value)} label="Descripcion" variant="filled" {...(((descripcion == "") && isEmptyField) ? { error: true } : {})} {...(((descripcion == "") && isEmptyField) ? { helperText: "Campo vacío" } : {})} />
                     </Stack>
-                    <Stack
-                        justifyContent="center"
-                        alignItems="center"
-                    >
+
+                    <Stack>
                         <TextField value={stack} onChange={(e) => setStack(e.target.value)} label="Stack" variant="filled" {...(((stack == "") && isEmptyField) ? { error: true } : {})} {...(((stack == "") && isEmptyField) ? { helperText: "Campo vacío" } : {})} />
                     </Stack>
-                    <Stack justifyContent="center" alignItems="center" marginBottom={2}>
-                        <TextField value={imagen} onChange={(e) => setImagen(e.target.value)} label="Url image" variant="filled" {...(((imagen == "") && isEmptyField) ? { error: true } : {})} {...(((imagen == "") && isEmptyField) ? { helperText: "Campo vacío" } : {})} />
+
+                    <Stack>
+                        <Input type='file' onChange={(e: any) => setImagenSave(e.target.files[0])} />
                     </Stack>
-                    <Button onClick={handleAddProject} variant="contained" color="success">Guardar</Button>
+
+                    {/* <Stack justifyContent="center" alignItems="center" marginBottom={2}>
+                        <TextField value={imagen} onChange={(e) => setImagen(e.target.value)} label="Url image" variant="filled" {...(((imagen == "") && isEmptyField) ? { error: true } : {})} {...(((imagen == "") && isEmptyField) ? { helperText: "Campo vacío" } : {})} />
+                    </Stack> */}
+
+                </Stack>
+
+                <Stack justifyContent='center' alignItems="center">
+                    <Button onClick={handleAddProject} size='medium' variant="contained" color="success">Guardar</Button>
                 </Stack>
 
             </Box>

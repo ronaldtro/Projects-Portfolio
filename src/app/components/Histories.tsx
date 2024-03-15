@@ -7,6 +7,7 @@ import { modalService } from "../services/modal.service";
 import { alertService } from "../services/alert.service";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import confirm from "../helps/confirm";
+import { Close } from "@mui/icons-material";
 
 
 const Histories = () => {
@@ -90,7 +91,7 @@ const Histories = () => {
                     </Badge>
                 </IconButton>
                 <Typography color="white" align="center" aria-label="Descripcion">
-                    Tú proyecto
+                    Tú historia
                 </Typography>
             </Stack>
 
@@ -98,15 +99,16 @@ const Histories = () => {
                 {projects.map((p: Project) => (
                     <Stack key={p.projectId}>
                         <Button onClick={(e) => handleDeleteProject(e, p)}>
-                            <Typography color="white" aria-label="Descripcion">
+                            {/* <Typography color="white" aria-label="Descripcion">
                                 X
-                            </Typography>
+                            </Typography> */}
+                            <Close fontSize="small" sx={{color: '#FFFFFF'}}/>
                         </Button>
                         <IconButton href={'#' + p.projectId}>
-                            <Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" sx={{ width: 45, height: 42, border: "2px solid #22FF0C" }} />
+                            <Avatar src={"/"+p.imagen} sx={{ width: 45, height: 42, border: "2px solid #22FF0C" }} />
                         </IconButton>
                         <Typography color="white" align="center" aria-label="Descripcion">
-                            Proyecto {(projects.indexOf(p)) + 1}
+                            App #{(projects.indexOf(p)) + 1}
                         </Typography>
                     </Stack>
                 ))}

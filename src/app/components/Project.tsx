@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 import { Like } from "../models/Like";
 import { modalService } from '../services/modal.service';
 
+
 const ExpandMore = styled((props: any) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
@@ -43,15 +44,15 @@ const Project: React.FC<projectProps> = ({ proyecto, indice, indiceMax }) => {
     const [checkFavorite, setCheckFavorite] = useState(false);
     const [borderProperties, setBorderProperties] = useState("2px solid #FFFFFF");
 
-    useEffect(() => {
-        setTimeout(() => {
-            if (borderProperties == "2px solid #000000") {
-                setBorderProperties("2px solid #FFFFFF");
-            } else {
-                setBorderProperties("2px solid #000000");
-            }
-        }, 1000);
-    }, [borderProperties]);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         if (borderProperties == "2px solid #000000") {
+    //             setBorderProperties("2px solid #FFFFFF");
+    //         } else {
+    //             setBorderProperties("2px solid #000000");
+    //         }
+    //     }, 1000);
+    // }, [borderProperties]);
 
 
     //Verificar si el usuario ya le ha dado like
@@ -150,9 +151,10 @@ return (
             component="img"
             height="380"
             sx={{ px: 1.5 }}
-            src={proyecto.imagen}
+            src={`/${proyecto.imagen}`}
             alt="Paella dish"
         />
+        
         <CardContent>
             <Typography variant="body2" color="white">
                 {proyecto.descripcion}
@@ -161,17 +163,15 @@ return (
         <CardActions disableSpacing>
 
             <Stack direction="row" gap={0.7} justifyContent="center" alignItems="center">
-                <Checkbox {...label} sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }}
+                <Checkbox {...label} 
                     icon={<FavoriteBorderIcon sx={{ color: "#FFFFFF" }} />}
                     onChange={handleLike} checked={checkFavorite}
                     checkedIcon={<FavoriteIcon sx={{ color: "#FFFFFF" }} />} />
 
-                <IconButton onClick={handleModalMessage} aria-label="sendMessage"
-                    sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }}>
+                <IconButton onClick={handleModalMessage} aria-label="sendMessage">
                     <ForumIcon sx={{ color: "#FFFFFF" }} />
                 </IconButton>
-                <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share"
-                    sx={{ border: borderProperties, borderRadius: 6, p: 0.5 }}>
+                <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share">
                     <SendIcon sx={{ color: "#FFFFFF" }} />
                 </IconButton>
             </Stack>

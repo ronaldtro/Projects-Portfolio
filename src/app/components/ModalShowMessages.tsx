@@ -9,6 +9,7 @@ import { Project } from '../models/Project';
 import { v4 as uuidv4 } from 'uuid';
 import { Message } from '../models/Message';
 import { addMessage, deleteMessage } from '../redux/states/messages';
+import { Close } from '@mui/icons-material';
 
 
 const ModalShowMessages = () => {
@@ -34,13 +35,11 @@ const ModalShowMessages = () => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: 400,
+        width: '70%',
         bgcolor: '#FFFFFF',
         border: '2px solid #000',
         boxShadow: 24,
-        pt: 2,
-        px: 4,
-        pb: 3,
+        p: 5,
         color: '#000000'
     };
 
@@ -68,14 +67,14 @@ const ModalShowMessages = () => {
             aria-labelledby="parent-modal-title"
             aria-describedby="parent-modal-description"
         >
-            <Box sx={{ ...modalStyle, width: 400 }}>
-                <Typography variant="body1" align="center" color="black" mb={2}>
+            <Box sx={{ ...modalStyle }}>
+                <Typography variant="h5" align="center" color="black" mb={5}>
                     Mis mensajes
                 </Typography>
                 <Divider />
                 {messages.length > 0 ?
-                    <TableContainer component={Paper}>
-                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableContainer>
+                        <Table aria-label="simple table">
                             <TableHead>
                                 <TableRow>
                                     <TableCell align="center">Id</TableCell>
@@ -97,7 +96,11 @@ const ModalShowMessages = () => {
                                         <TableCell align="center">{m.userId}</TableCell>
                                         <TableCell align="center">{m.subject}</TableCell>
                                         <TableCell align="center">{m.body}</TableCell>
-                                        <TableCell align="center"><Button onClick={(e) => handleDeleteMessage(e, m._id)} color="info">X</Button></TableCell>
+                                        <TableCell align="center">
+                                            <Button onClick={(e) => handleDeleteMessage(e, m._id)} >
+                                                <Close fontSize='medium' color='action' />
+                                            </Button>
+                                        </TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
