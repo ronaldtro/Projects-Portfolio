@@ -24,7 +24,8 @@ const likeSchema = new Schema(
             required: [true, "tipo es requerido"],
             trim: true,
         }
-    });
+    }
+);
 
 const like = mongoose.models.like || mongoose.model("like", likeSchema);
 

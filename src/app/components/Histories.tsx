@@ -8,7 +8,8 @@ import { alertService } from "../services/alert.service";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import confirm from "../helps/confirm";
 import { Close } from "@mui/icons-material";
-
+import { useState } from "react";
+import imagenUrl from "../helps/imagenUrl";
 
 const Histories = () => {
 
@@ -17,6 +18,8 @@ const Histories = () => {
     const projects = useSelector((store: any) => store.projects);
     const user = useSelector((store: any) => store.user);
     const admin = process.env.ADMIN;
+
+    const [imageSrc, setImageSrc] = useState<string>("");
 
     const t = createTheme({
         palette: {
@@ -34,6 +37,22 @@ const Histories = () => {
             },
         },
     });
+
+    const handleGetImage = async () => {
+        //Obtener imagen
+        const getImage = await fetch("/api/saveImage");
+        const { msg } = await getImage.json();
+        console.log(msg);
+
+        //Forma 1 - visualizar imagen: Formatear a blob
+        // const blob = new Blob([msg.image.data], { type: msg.type });
+        // const img = URL.createObjectURL(blob);
+
+        //Forma 2
+        const base64Image = Buffer.from(msg.image.data).toString('base64');
+        const dataURL = `data:${msg.type};base64,${base64Image}`;
+        setImageSrc(dataURL);
+    };
 
     const handleAddProject = (e: any) => {
         e.preventDefault();
@@ -53,8 +72,8 @@ const Histories = () => {
 
             const userConfirm = await confirm();
 
-            if(!userConfirm) return;
-            
+            if (!userConfirm) return;
+
             try {
                 const deleteProject = await fetch(`/api/projects?id=${project._id}`, {
                     method: 'DELETE',
@@ -75,8 +94,7 @@ const Histories = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', overflowX: 'auto', width: '100%', backgroundColor: 'black', padding: '12px', gap: '30px'}}>
-
+        <Box sx={{ display: 'flex', overflowX: 'auto', width: '100%', backgroundColor: 'black', padding: '12px', gap: '30px' }}>
             <Stack justifyContent="center" alignItems="center">
                 <IconButton onClick={handleAddProject}>
                     <Badge
@@ -102,10 +120,10 @@ const Histories = () => {
                             {/* <Typography color="white" aria-label="Descripcion">
                                 X
                             </Typography> */}
-                            <Close fontSize="small" sx={{color: '#FFFFFF'}}/>
+                            <Close fontSize="small" sx={{ color: '#FFFFFF' }} />
                         </Button>
                         <IconButton href={'#' + p.projectId}>
-                            <Avatar src={"/"+p.imagen} sx={{ width: 45, height: 42, border: "2px solid #22FF0C" }} />
+                            <Avatar src={imagenUrl(p.imagen.data, p.imagen.type)} sx={{ width: 45, height: 42, border: "2px solid #22FF0C" }} />
                         </IconButton>
                         <Typography color="white" align="center" aria-label="Descripcion">
                             App #{(projects.indexOf(p)) + 1}

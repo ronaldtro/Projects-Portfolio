@@ -5,5 +5,8 @@ export interface Project{
     fecha?: string,
     descripcion: string,
     stack: string,
-    imagen: string
+    imagen: {
+        data: Buffer,
+        type: string
+    }
 }

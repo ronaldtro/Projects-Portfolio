@@ -106,19 +106,28 @@ const ModalNewProject = () => {
 
         try {
 
-            // const addProjectResp = await fetch(`/api/projects`, {
-            //     method: 'POST',
-            //     headers: { "Content-type": "application/json" },
-            //     body: JSON.stringify(project)
-            // })
 
-            const addProjectResp = await fetch(`/api/projects`, {
+            // Ejemplo al mandar un json
+            // headers: { "Content-type": "application/json" 
+            // body: JSON.stringify(project)
+
+            const resp = await fetch(`/api/projects`, {
                 method: 'POST',
                 body: fd
             })
-
-            const { msg } = await addProjectResp.json();
+            const {msg} = await resp.json();
             dispatch(addProject(msg));
+
+
+            // const sendImage = await fetch("/api/saveImage", {
+            //     method: 'POST',
+            //     body: fd
+            // })
+
+            // const { msg } = await sendImage.json();
+            // console.log(msg);
+
+            //dispatch(addProject(msg));
 
         } catch (e: any) {
             console.log("Ha ocurrido un error");

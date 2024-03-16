@@ -1,12 +1,12 @@
 import connectDb from "@/app/lib/mongodb";
-import { Project } from "@/app/models/Project";
 import project from "@/app/mongoModels/project";
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 import path from 'path';
 import fs from 'fs';
-import { writeFile } from "fs/promises";
+import { writeFile, readFile } from "fs/promises";
 import { v4 as uuidv4 } from "uuid";
+import ProjectModel from "@/app/mongoModels/project";
 
 function fileToBuffer(archivo: any) {
     return new Promise((resolve, reject) => {
@@ -29,34 +29,55 @@ export async function POST(request: NextRequest) {
         const descripcion = formData.get('descripcion');
         const fecha = formData.get('fecha');
         const stack = formData.get('stack');
-        const imagen: any = formData.get('imagen');
+        const imagen: any = formData.get('imagen');//File
 
-        console.log(formData);
-        console.log(imagen.name);
+        //METODO LOCAL: GUARDAR IMAGEN EN EL SISTEMA DE ARCHIVOS DE LA APP
 
-        const filename = Date.now()+imagen.name;
-        const directory = path.join(process.cwd(), "public/");
-        const destinationPath = path.join(directory, filename);
+        // const filename = Date.now()+imagen.name;
+        // const directory = path.join(process.cwd(), "public/");
+        // const destinationPath = path.join(directory, filename);
 
-        if (!fs.existsSync(directory)) {
-            fs.mkdirSync(directory);
-        }
+        // if (!fs.existsSync(directory)) {
+        //     fs.mkdirSync(directory);
+        // }
 
-        const buffer = Buffer.from(await imagen.arrayBuffer());
-        await writeFile(destinationPath, buffer);
+        // const buffer = Buffer.from(await imagen.arrayBuffer());
+        // await writeFile(destinationPath, buffer);
 
+        // await connectDb();
+        // const p:Project = {
+        //     projectId: uuidv4(),
+        //     nombre: nombre ? nombre.toString() : "",
+        //     descripcion: descripcion ? descripcion.toString() : "",
+        //     fecha: fecha ? fecha.toString() : "",
+        //     stack: stack ? stack.toString() : "",
+        //     imagen: imagen ? filename : ""
+        // }
+        // const resp = await project.create(p);
+
+        // return NextResponse.json({ msg: resp, status: 200 });
+
+        //NUEVO METODO: GUARDAR LA IMAGEN EN EL SERVIDOR CON FORMATO BUFFER
         await connectDb();
-        const p:Project = {
+        const imagenBuffer = Buffer.from(await imagen.arrayBuffer());
+        const p = {
             projectId: uuidv4(),
-            nombre: nombre ? nombre.toString() : "",
-            descripcion: descripcion ? descripcion.toString() : "",
-            fecha: fecha ? fecha.toString() : "",
-            stack: stack ? stack.toString() : "",
-            imagen: imagen ? filename : ""
+            nombre: nombre,
+            fecha: fecha,
+            descripcion: descripcion,
+            stack: stack,
+            imagen: {
+                data: imagenBuffer,
+                type: imagen.type
+            }
         }
         const resp = await project.create(p);
 
-        return NextResponse.json({ msg: resp, status: 200 });
+        return NextResponse.json({
+            msg: resp,
+            status: 200
+        })
+
 
     } catch (error) {
         return NextResponse.json({

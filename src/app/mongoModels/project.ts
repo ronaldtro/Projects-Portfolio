@@ -30,9 +30,16 @@ const projectSchema = new Schema(
             trim: true,
         },
         imagen: {
-            type: String,
-            required: [true, "Url de la imagen es requerida"],
-            trim: true
+            data: {
+                type: Buffer,
+                required: [true, "data de la imagen es requerida"],
+                trim: false
+            },
+            type: {
+                type: String,
+                required: [true, "type de la imagen es requerido"],
+                trim: false
+            }
         }
     });
 

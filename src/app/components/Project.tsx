@@ -15,7 +15,7 @@ import { addLike, addLikes, removeLike } from "../redux/states/like";
 import { useSelector } from "react-redux";
 import { Like } from "../models/Like";
 import { modalService } from '../services/modal.service';
-
+import imagenUrl from '../helps/imagenUrl';
 
 const ExpandMore = styled((props: any) => {
     const { expand, ...other } = props;
@@ -151,7 +151,7 @@ return (
             component="img"
             height="380"
             sx={{ px: 1.5 }}
-            src={`/${proyecto.imagen}`}
+            src={imagenUrl(proyecto.imagen.data, proyecto.imagen.type)}
             alt="Paella dish"
         />
         
