@@ -6,7 +6,7 @@ export interface Project{
     descripcion: string,
     stack: string,
     imagen: {
-        data: Buffer,
+        data: string,
         type: string
     }
 }

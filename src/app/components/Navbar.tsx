@@ -18,6 +18,52 @@ import { alertService } from "../services/alert.service";
 import { AlertComponent } from "./AlertComponent";
 import { v4 as uuidv4 } from "uuid"
 import { addUser } from "../redux/states/user";
+import imagenUrl from "../helps/imagenUrl";
+
+// import type { InferGetStaticPropsType, GetStaticProps } from 'next'
+
+// type U = any;
+// type M = any;
+// type L = any;
+// type P = any;
+
+// export const getStaticProps = (async (context) => {
+//   let u;
+//   let m;
+//   let l;
+//   let p;
+
+//   const id = localStorage.getItem("userId");
+//   if (id) {
+//     u = id;
+//   } else {
+//     const newUser = uuidv4();
+//     localStorage.setItem("userId", newUser);
+//     u = newUser;
+//   }
+
+//   const msj = await fetch(`/api/messages`);
+//   const respM = await msj.json();
+//   console.log(respM);
+//   m = respM.msg;
+
+
+//   const lik = await fetch(`/api/likes`);
+//   const respL = await lik.json();
+//   l = respL.msg;
+
+//   const proj = await fetch(`/api/projects`);
+//   const respP = await proj.json();
+//   respP.msg.forEach((p: any) => p.src = imagenUrl(p.imagen.data, p.imagen.type));
+//   p = respP.msg;
+
+//   return { props: { u, m, l, p } }
+// }) satisfies GetStaticProps<{
+//   u: U,
+//   m: M,
+//   l: L,
+//   p: P
+// }>
 
 
 const Navbar = () => {
@@ -62,6 +108,8 @@ const Navbar = () => {
     const getProjects = async () => {
       const projects = await fetch(`/api/projects`);
       const { msg } = await projects.json();
+      //msg.forEach((p: any) => p.src = imagenUrl(p.imagen.data, p.imagen.type));
+      console.log(msg);
       dispatch(addProjects(msg));
     }
     getProjects();

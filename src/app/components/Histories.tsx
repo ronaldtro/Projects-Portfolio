@@ -1,5 +1,5 @@
 
-import { Avatar, IconButton, Stack, Badge, Typography, Button, Box, Toolbar, AppBar, Container } from "@mui/material/index";
+import { Avatar, IconButton, Stack, Badge, Typography, Button, Box, Toolbar, AppBar, Container, CircularProgress } from "@mui/material/index";
 import { useDispatch, useSelector } from "react-redux";
 import { Project } from "../models/Project";
 import { deleteProject } from "../redux/states/projects";
@@ -8,8 +8,6 @@ import { alertService } from "../services/alert.service";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import confirm from "../helps/confirm";
 import { Close } from "@mui/icons-material";
-import { useState } from "react";
-import imagenUrl from "../helps/imagenUrl";
 
 const Histories = () => {
 
@@ -18,8 +16,6 @@ const Histories = () => {
     const projects = useSelector((store: any) => store.projects);
     const user = useSelector((store: any) => store.user);
     const admin = process.env.ADMIN;
-
-    const [imageSrc, setImageSrc] = useState<string>("");
 
     const t = createTheme({
         palette: {
@@ -37,22 +33,6 @@ const Histories = () => {
             },
         },
     });
-
-    const handleGetImage = async () => {
-        //Obtener imagen
-        const getImage = await fetch("/api/saveImage");
-        const { msg } = await getImage.json();
-        console.log(msg);
-
-        //Forma 1 - visualizar imagen: Formatear a blob
-        // const blob = new Blob([msg.image.data], { type: msg.type });
-        // const img = URL.createObjectURL(blob);
-
-        //Forma 2
-        const base64Image = Buffer.from(msg.image.data).toString('base64');
-        const dataURL = `data:${msg.type};base64,${base64Image}`;
-        setImageSrc(dataURL);
-    };
 
     const handleAddProject = (e: any) => {
         e.preventDefault();
@@ -114,7 +94,7 @@ const Histories = () => {
             </Stack>
 
             <Stack direction="row" alignItems='center' justifyContent='center' spacing={5}>
-                {projects.map((p: Project) => (
+                {projects.length != 0 ? projects.map((p: Project) => (
                     <Stack key={p.projectId}>
                         <Button onClick={(e) => handleDeleteProject(e, p)}>
                             {/* <Typography color="white" aria-label="Descripcion">
@@ -123,13 +103,15 @@ const Histories = () => {
                             <Close fontSize="small" sx={{ color: '#FFFFFF' }} />
                         </Button>
                         <IconButton href={'#' + p.projectId}>
-                            <Avatar src={imagenUrl(p.imagen.data, p.imagen.type)} sx={{ width: 45, height: 42, border: "2px solid #22FF0C" }} />
+                            <Avatar src={p.imagen.data} sx={{ width: 45, height: 42, border: "2px solid #22FF0C" }} />
                         </IconButton>
                         <Typography color="white" align="center" aria-label="Descripcion">
                             App #{(projects.indexOf(p)) + 1}
                         </Typography>
                     </Stack>
-                ))}
+                )) : <Stack sx={{ width: "auto" }}>
+                    <CircularProgress color="primary" />
+                </Stack>}
             </Stack>
 
         </Box>

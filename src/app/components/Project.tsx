@@ -1,5 +1,4 @@
 import { Avatar, Card, CardActions, Checkbox, CardContent, CardHeader, CardMedia, Collapse, IconButton, styled, Typography, Stack } from "@mui/material";
-
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -15,7 +14,7 @@ import { addLike, addLikes, removeLike } from "../redux/states/like";
 import { useSelector } from "react-redux";
 import { Like } from "../models/Like";
 import { modalService } from '../services/modal.service';
-import imagenUrl from '../helps/imagenUrl';
+
 
 const ExpandMore = styled((props: any) => {
     const { expand, ...other } = props;
@@ -149,9 +148,9 @@ return (
         />
         <CardMedia
             component="img"
-            height="380"
+            height="auto"
             sx={{ px: 1.5 }}
-            src={imagenUrl(proyecto.imagen.data, proyecto.imagen.type)}
+            src={`${proyecto.imagen.data}`}
             alt="Paella dish"
         />
         

@@ -31,7 +31,7 @@ const projectSchema = new Schema(
         },
         imagen: {
             data: {
-                type: Buffer,
+                type: String,
                 required: [true, "data de la imagen es requerida"],
                 trim: false
             },

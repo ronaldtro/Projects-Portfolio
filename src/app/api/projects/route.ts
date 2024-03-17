@@ -57,9 +57,13 @@ export async function POST(request: NextRequest) {
 
         // return NextResponse.json({ msg: resp, status: 200 });
 
+        
         //NUEVO METODO: GUARDAR LA IMAGEN EN EL SERVIDOR CON FORMATO BUFFER
         await connectDb();
         const imagenBuffer = Buffer.from(await imagen.arrayBuffer());
+        const base64Image = Buffer.from(imagenBuffer).toString('base64');
+        const dataURL = `data:${imagen.type};base64,${base64Image}`;
+
         const p = {
             projectId: uuidv4(),
             nombre: nombre,
@@ -67,7 +71,7 @@ export async function POST(request: NextRequest) {
             descripcion: descripcion,
             stack: stack,
             imagen: {
-                data: imagenBuffer,
+                data: dataURL,
                 type: imagen.type
             }
         }
@@ -92,18 +96,23 @@ export async function GET() {
     try {
         await connectDb();
         const projects = await project.find();
-        console.log(projects);
+
+        // projects.map((p) => {
+        //     const base64Image = Buffer.from(p.imagen.data).toString('base64');
+        //     const dataURL = `data:${p.imagen.type};base64,${base64Image}`;
+        //     p.imagen.type = dataURL;
+        // });
 
         return NextResponse.json({ msg: projects });
-    } catch (error: any) {
+    } catch (error) {
         if (error instanceof mongoose.Error.ValidationError) {
             let errorList = [];
             for (let e in error.errors) {
                 errorList.push(e);
             };
-            NextResponse.json({ msg: errorList });
+            return NextResponse.json({ msg: errorList });
         } else {
-            NextResponse.json({ msg: "Error no capturado" });
+            return NextResponse.json({ msg: "Error no capturado" });
         }
     }
 }
