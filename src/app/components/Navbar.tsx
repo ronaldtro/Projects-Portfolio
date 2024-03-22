@@ -18,7 +18,7 @@ import { alertService } from "../services/alert.service";
 import { AlertComponent } from "./AlertComponent";
 import { v4 as uuidv4 } from "uuid"
 import { addUser } from "../redux/states/user";
-import projectsData from "../helps/projectsData.json";
+
 
 
 const Navbar = () => {
