@@ -18,52 +18,7 @@ import { alertService } from "../services/alert.service";
 import { AlertComponent } from "./AlertComponent";
 import { v4 as uuidv4 } from "uuid"
 import { addUser } from "../redux/states/user";
-import imagenUrl from "../helps/imagenUrl";
-
-// import type { InferGetStaticPropsType, GetStaticProps } from 'next'
-
-// type U = any;
-// type M = any;
-// type L = any;
-// type P = any;
-
-// export const getStaticProps = (async (context) => {
-//   let u;
-//   let m;
-//   let l;
-//   let p;
-
-//   const id = localStorage.getItem("userId");
-//   if (id) {
-//     u = id;
-//   } else {
-//     const newUser = uuidv4();
-//     localStorage.setItem("userId", newUser);
-//     u = newUser;
-//   }
-
-//   const msj = await fetch(`/api/messages`);
-//   const respM = await msj.json();
-//   console.log(respM);
-//   m = respM.msg;
-
-
-//   const lik = await fetch(`/api/likes`);
-//   const respL = await lik.json();
-//   l = respL.msg;
-
-//   const proj = await fetch(`/api/projects`);
-//   const respP = await proj.json();
-//   respP.msg.forEach((p: any) => p.src = imagenUrl(p.imagen.data, p.imagen.type));
-//   p = respP.msg;
-
-//   return { props: { u, m, l, p } }
-// }) satisfies GetStaticProps<{
-//   u: U,
-//   m: M,
-//   l: L,
-//   p: P
-// }>
+import projectsData from "../helps/projectsData.json";
 
 
 const Navbar = () => {
@@ -71,48 +26,37 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    if (userId) {
-      dispatch(addUser(userId));
-    } else {
-      const newUser = uuidv4();
-      localStorage.setItem("userId", newUser);
-      dispatch(addUser(newUser));
-    }
-  }, []);
+
+    const initialGet = async () => {
+
+      const projects = await fetch('/api/projects');
+      const respP = await projects.json();
+      console.log(respP.msg);
 
 
-  //Obtener de la db y almacenar los mensajes en el manejador de estados.
-  useEffect(() => {
-    const getMessages = async () => {
       const messages = await fetch(`/api/messages`);
-      const { msg } = await messages.json();
-      dispatch(addMessages(msg));
-    }
-    getMessages();
-  }, []);
+      const respM = await messages.json();
 
-  //Obtener de la db y almacenar los likes en el manejador de estados.
-  useEffect(() => {
-    const getLikes = async () => {
+
       const likes = await fetch(`/api/likes`);
-      const { msg } = await likes.json();
+      const respL = await likes.json();
 
-      dispatch(addLikes(msg));
-    }
-    getLikes();
-  }, []);
+      dispatch(addProjects(respP.msg));
+      dispatch(addMessages(respM.msg));
+      dispatch(addLikes(respL.msg));
 
-  //Obtener de la db y Guardar los proyectos en el manejador de estados
-  useEffect(() => {
-    const getProjects = async () => {
-      const projects = await fetch(`/api/projects`);
-      const { msg } = await projects.json();
-      //msg.forEach((p: any) => p.src = imagenUrl(p.imagen.data, p.imagen.type));
-      console.log(msg);
-      dispatch(addProjects(msg));
-    }
-    getProjects();
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        dispatch(addUser(userId))
+      } else {
+        const newUser = uuidv4();
+        localStorage.setItem("userId", newUser);
+        dispatch(addUser(newUser));
+      }
+
+    };
+    initialGet();
+
   }, []);
 
 
