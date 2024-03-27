@@ -1,7 +1,6 @@
 
 import { Box, IconButton, Modal, Typography, Stack, Divider, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
-
 import { GrClose } from "react-icons/gr";
 import { FaRegHandSpock, FaBootstrap, FaReact, FaAngular, FaInstagram, FaNode } from "react-icons/fa";
 import { BiLogoTailwindCss } from "react-icons/bi";

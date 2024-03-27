@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Project } from "../models/Project";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from 'react';
-import { addLike, addLikes, removeLike } from "../redux/states/like";
+import { addLike, removeLike } from "../redux/states/like";
 import { useSelector } from "react-redux";
 import { Like } from "../models/Like";
 import { modalService } from '../services/modal.service';
@@ -149,7 +149,7 @@ return (
         <CardMedia
             component="img"
             height="auto"
-            sx={{ px: 1.5 }}
+            sx={{ px: "20%"}}
             src={`${proyecto.imagen.data}`}
             alt="Paella dish"
         />
@@ -182,7 +182,7 @@ return (
                 aria-label="show more"
             >
                 <Typography variant="body2" color="primary">
-                    Stack usado
+                    Stack
                 </Typography>
                 <ExpandMoreIcon color="primary" />
             </ExpandMore>

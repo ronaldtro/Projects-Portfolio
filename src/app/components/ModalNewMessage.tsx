@@ -3,8 +3,6 @@ import { Box, Modal, Typography, Stack, Button, TextField } from '@mui/material'
 import { useState, useEffect } from 'react';
 import { modalService } from '../services/modal.service';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProject } from '../redux/states/projects';
-import { Project } from '../models/Project';
 import { v4 as uuidv4 } from 'uuid';
 import { Message } from '../models/Message';
 import { addMessage } from '../redux/states/messages';

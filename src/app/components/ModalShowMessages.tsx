@@ -1,14 +1,11 @@
 
 
-import { Box, Modal, Typography, Stack, Button, TextField, TableContainer, Paper, Table, TableHead, TableBody, TableCell, TableRow, Divider } from '@mui/material';
+import { Box, Modal, Typography, Button, TableContainer, Table, TableHead, TableBody, TableCell, TableRow, Divider } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { modalService } from '../services/modal.service';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProject } from '../redux/states/projects';
-import { Project } from '../models/Project';
-import { v4 as uuidv4 } from 'uuid';
 import { Message } from '../models/Message';
-import { addMessage, deleteMessage } from '../redux/states/messages';
+import { deleteMessage } from '../redux/states/messages';
 import { Close } from '@mui/icons-material';
 
 

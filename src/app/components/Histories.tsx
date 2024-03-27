@@ -1,11 +1,11 @@
 
-import { Avatar, IconButton, Stack, Badge, Typography, Button, Box, Toolbar, AppBar, Container, CircularProgress } from "@mui/material/index";
+import { Avatar, IconButton, Stack, Badge, Typography, Button, Box, CircularProgress } from "@mui/material/index";
 import { useDispatch, useSelector } from "react-redux";
 import { Project } from "../models/Project";
 import { deleteProject } from "../redux/states/projects";
 import { modalService } from "../services/modal.service";
 import { alertService } from "../services/alert.service";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import confirm from "../helps/confirm";
 import { Close } from "@mui/icons-material";
 

@@ -1,8 +1,8 @@
-import Alert, { AlertColor } from '@mui/material/Alert';
+import Alert from '@mui/material/Alert';
 import { useEffect, useState } from 'react';
 import Collapse from '@mui/material/Collapse';
 import { alertService } from '../services/alert.service';
-import { AlertTitle, AppBar, Box } from '@mui/material';
+import { AlertTitle } from '@mui/material';
 
 
 export const AlertComponent = () => {

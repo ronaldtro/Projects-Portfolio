@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 //MUI - icons
 import ForumIcon from '@mui/icons-material/Forum';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { AlertTitle, AppBar, Badge, Box, CssBaseline, IconButton, Stack, Toolbar, Typography } from '@mui/material/index';
+import { AppBar, Badge, IconButton, Toolbar, Typography } from '@mui/material/index';
 //React Redux
 import { useDispatch, useSelector } from "react-redux";
 import { addMessages } from "../redux/states/messages";

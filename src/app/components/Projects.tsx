@@ -1,4 +1,4 @@
-import { CircularProgress, Divider, Typography } from "@mui/material";
+import { Divider } from "@mui/material";
 import { useSelector } from "react-redux";
 import Project from "./Project";
 import { Project as ProjectModel } from "../models/Project";

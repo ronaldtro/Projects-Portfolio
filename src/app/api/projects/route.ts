@@ -2,11 +2,10 @@ import connectDb from "@/app/lib/mongodb";
 import project from "@/app/mongoModels/project";
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
-import path from 'path';
+//import path from 'path';
 import fs from 'fs';
-import { writeFile, readFile } from "fs/promises";
 import { v4 as uuidv4 } from "uuid";
-import ProjectModel from "@/app/mongoModels/project";
+import { Project } from "@/app/models/Project";
 
 function fileToBuffer(archivo: any) {
     return new Promise((resolve, reject) => {
@@ -57,32 +56,31 @@ export async function POST(request: NextRequest) {
 
         // return NextResponse.json({ msg: resp, status: 200 });
 
-        
+
         //NUEVO METODO: GUARDAR LA IMAGEN EN EL SERVIDOR CON FORMATO BUFFER
         await connectDb();
         const imagenBuffer = Buffer.from(await imagen.arrayBuffer());
         const base64Image = Buffer.from(imagenBuffer).toString('base64');
         const dataURL = `data:${imagen.type};base64,${base64Image}`;
 
-        const p = {
+        const p:Project = {
             projectId: uuidv4(),
-            nombre: nombre,
-            fecha: fecha,
-            descripcion: descripcion,
-            stack: stack,
+            nombre: nombre ? nombre.toString() : "",
+            descripcion: descripcion ? descripcion.toString() : "",
+            fecha: fecha ? fecha.toString() : "",
+            stack: stack ? stack.toString() : "",
             imagen: {
                 data: dataURL,
                 type: imagen.type
             }
         }
-        const resp = await project.create(p);
 
+        const resp = await project.create(p);
+        
         return NextResponse.json({
             msg: resp,
             status: 200
-        })
-
-
+        });
     } catch (error) {
         return NextResponse.json({
             status: 500,

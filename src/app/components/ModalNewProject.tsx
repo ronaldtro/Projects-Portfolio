@@ -1,10 +1,9 @@
 
-import { Box, Modal, Typography, Stack, Button, TextField, OutlinedInput, FormControl, useFormControl, FormHelperText, Tooltip, FilledInput, Input } from '@mui/material';
-import { useState, useEffect, useMemo } from 'react';
+import { Box, Modal, Typography, Stack, Button, TextField, Input } from '@mui/material';
+import { useState, useEffect } from 'react';
 import { modalService } from '../services/modal.service';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addProject } from '../redux/states/projects';
-import { Project } from '../models/Project';
 import { v4 as uuidv4 } from 'uuid';
 import confirm from '../helps/confirm';
 
@@ -116,6 +115,7 @@ const ModalNewProject = () => {
                 body: fd
             })
             const {msg} = await resp.json();
+            console.log(msg);
             dispatch(addProject(msg));
 
 

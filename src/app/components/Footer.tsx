@@ -1,12 +1,11 @@
 
-import { useState, SetStateAction, useEffect } from "react";
-import { Avatar, BottomNavigation, BottomNavigationAction, Box, Button, Divider, IconButton, Modal, Paper, Stack, Typography } from "../../../node_modules/@mui/material/index";
+import { useState, useEffect } from "react";
+import { Avatar, BottomNavigation, BottomNavigationAction, Box, Paper} from "../../../node_modules/@mui/material/index";
 import HomeIcon from '../../../node_modules/@mui/icons-material/Home';
 import SearchIcon from '../../../node_modules/@mui/icons-material/Search';
 import AddBoxOutlinedIcon from '../../../node_modules/@mui/icons-material/AddBoxOutlined';
 import MovieFilterOutlinedIcon from '../../../node_modules/@mui/icons-material/MovieFilterOutlined';
 import { modalService } from "../services/modal.service";
-import Fade from '@mui/material/styles';
 
 const Footer = () => {
 
