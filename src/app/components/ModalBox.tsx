@@ -9,54 +9,6 @@ import { BsLinkedin, BsGithub, BsMicrosoft } from "react-icons/bs";
 import { modalService } from '../services/modal.service';
 
 
-function ChildModal() {
-
-    const [open, setOpen] = useState(false);
-    
-    const handleOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    //Estilos del modal
-    const modalStyle = {
-        position: 'absolute' as 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: '#FFFFFF',
-        border: '2px solid #000',
-        boxShadow: 24,
-        pt: 2,
-        px: 4,
-        pb: 3,
-        color: '#000000'
-    };
-
-    return (
-        <>
-            <Button onClick={handleOpen}>Open Child Modal</Button>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="child-modal-title"
-                aria-describedby="child-modal-description"
-            >
-                <Box sx={{ ...modalStyle, width: 200 }}>
-                    <Typography variant="body1">Text in a child modal</Typography>
-                    <Typography variant="body2">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    </Typography>
-                    <Button onClick={handleClose}>Close Child Modal</Button>
-                </Box>
-            </Modal>
-        </>
-    );
-}
-
 const ModalBox = () => {
 
     const [open, setOpen] = useState<boolean>(false);
@@ -82,10 +34,8 @@ const ModalBox = () => {
         bgcolor: '#FFFFFF',
         border: '2px solid #000',
         boxShadow: 24,
-        pt: 2,
-        px: 4,
-        pb: 3,
-        color: '#000000'
+        color: '#000000',
+        p: 5
     };
 
     const externalPage = (e:any, tipo: string) => {
@@ -111,7 +61,7 @@ const ModalBox = () => {
             aria-labelledby="parent-modal-title"
             aria-describedby="parent-modal-description"
         >
-            <Box sx={{ ...modalStyle, width: 400 }}>
+            <Box sx={{...modalStyle}}>
 
                 <Typography variant="h3" align="right" color="black" mb={4}>
                     <IconButton onClick={handleClose}>
@@ -120,13 +70,19 @@ const ModalBox = () => {
                 </Typography>
 
                 <Typography variant="h6" align="center" color="black" mb={3}>
-                    <FaRegHandSpock /> Hola
+                    <FaRegHandSpock /> Hi, My name is Ronald
                 </Typography>
 
-                <Typography aria-label="PerfilDescription" align="justify" mb={4}>
-                    Mi nombre es Ronald y soy ingeniero de sistemas. Actualmente
-                    me dedico al desarrollo web como fullStack. Me gusta mucho la tecnologia, la musica, el aprendizaje autodidacta
-                    y conocer el mundo.
+                <Typography aria-label="ProfileDescription" align="justify" mb={4}>
+                    Actually i work in the analysis and web apps development. 
+                    I worked and have experience with: Angular, React, Next.js, Asp.net 7
+                    , between others technologies.
+                </Typography>
+                <Typography aria-label="ProfileDescription" align="justify" mb={4}>
+                    As a professional, I am a committed person, with much motivation and desire
+                    to grow in the job y personal. I like
+                    guide my work to quality, work in team and y learn in each
+                    experience.
                 </Typography>
 
                 <Stack justifyContent="center" alignItems="center" direction="row" gap={2} mb={1}>
@@ -196,7 +152,7 @@ const ModalBox = () => {
                     justifyContent="center"
                     direction="row"
                     alignItems="center"
-                    mt={4}
+                    mt={1}
                 >
                     <IconButton onClick={(e) => externalPage(e, "linkedin")}>
                         <BsLinkedin size={20} />

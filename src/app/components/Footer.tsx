@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Avatar, BottomNavigation, BottomNavigationAction, Box, Paper} from "../../../node_modules/@mui/material/index";
+import { Avatar, BottomNavigation, BottomNavigationAction, Box, Divider, Paper} from "../../../node_modules/@mui/material/index";
 import HomeIcon from '../../../node_modules/@mui/icons-material/Home';
 import SearchIcon from '../../../node_modules/@mui/icons-material/Search';
 import AddBoxOutlinedIcon from '../../../node_modules/@mui/icons-material/AddBoxOutlined';
@@ -30,17 +30,18 @@ const Footer = () => {
     return (
         <Box>
             <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}} elevation={1}>
+            <Divider />
                 <BottomNavigation
                     // value={value}
                     // onChange={(_event: any, newValue: SetStateAction<number>) => {
                     //     setValue(newValue);
                     // }}
-                    sx={{ bgcolor: "#000000", py: 5 }}
+                    sx={{ bgcolor: "#F6F3F3", py: 5 }}
                 >
-                    <BottomNavigationAction icon={<HomeIcon sx={{ color: "#FFFFFF" }} />} />
-                    <BottomNavigationAction icon={<SearchIcon sx={{ color: "#FFFFFF" }} />} />
-                    <BottomNavigationAction icon={<AddBoxOutlinedIcon sx={{ color: "#FFFFFF" }} />} />
-                    <BottomNavigationAction icon={<MovieFilterOutlinedIcon sx={{ color: "#FFFFFF" }} />} />
+                    <BottomNavigationAction icon={<HomeIcon sx={{ color: "#000000" }} />} />
+                    <BottomNavigationAction icon={<SearchIcon sx={{ color: "#000000" }} />} />
+                    <BottomNavigationAction icon={<AddBoxOutlinedIcon sx={{ color: "#000000" }} />} />
+                    <BottomNavigationAction icon={<MovieFilterOutlinedIcon sx={{ color: "#000000" }} />} />
                     <BottomNavigationAction onClick={handleOpen} label="" icon={<Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" sx={{border: borderProperties}} />} />
                 </BottomNavigation>
             </Paper>

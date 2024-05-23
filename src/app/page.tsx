@@ -20,6 +20,7 @@ export default function Home() {
         <Navbar />
         <Toolbar />
         <Histories />
+        <Divider />
         <Projects />
         <ModalBox />
         <ModalShowMessages />

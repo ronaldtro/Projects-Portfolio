@@ -71,31 +71,31 @@ const Navbar = () => {
     if (user == admin) {
       modalService.setShowMessages(true);
     } else {
-      alertService.setAlertDataSubject({ type: "error", message: "Necesitas permisos de administrador", title: "Error al visualizar mensajes" });
+      alertService.setAlertDataSubject({ type: "error", message: "You need admin permission", title: "Error to show messages" });
       alertService.setAlertSubject(true);
     }
 
   }
 
   return (
-    <AppBar component="nav" sx={{ bgcolor: '#000000' }}>
+    <AppBar component="nav" sx={{ bgcolor: '#F6F3F3' }}>
       <Toolbar>
         <Typography
           variant="h6"
           component="div"
-          sx={{ flexGrow: 1 }}
+          sx={{ flexGrow: 1, color: '#000000'}}
         >
           𝓡𝓸𝓷𝓪𝓵𝓭 𝓓𝓮𝓿 <KeyboardArrowDownIcon />
         </Typography>
 
         <IconButton aria-label="Favorites" disabled>
           <Badge badgeContent={likes.length} max={50} color="error">
-            <FavoriteBorderIcon sx={{ color: "#FFFFFF" }} />
+            <FavoriteBorderIcon sx={{ color: "#000000" }} />
           </Badge>
         </IconButton>
         <IconButton onClick={handleShowMessages} aria-label="Messages">
           <Badge badgeContent={messages.length} max={50} color="error">
-            <ForumIcon sx={{ color: "#FFFFFF" }} />
+            <ForumIcon sx={{ color: "#000000" }} />
           </Badge>
         </IconButton>
       </Toolbar>

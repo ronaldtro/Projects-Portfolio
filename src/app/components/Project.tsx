@@ -43,17 +43,6 @@ const Project: React.FC<projectProps> = ({ proyecto, indice, indiceMax }) => {
     const [checkFavorite, setCheckFavorite] = useState(false);
     const [borderProperties, setBorderProperties] = useState("2px solid #FFFFFF");
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         if (borderProperties == "2px solid #000000") {
-    //             setBorderProperties("2px solid #FFFFFF");
-    //         } else {
-    //             setBorderProperties("2px solid #000000");
-    //         }
-    //     }, 1000);
-    // }, [borderProperties]);
-
-
     //Verificar si el usuario ya le ha dado like
     useEffect(() => {
         if (likes.some((l: any) => (l.projectId == proyecto.projectId && l.userId == user))) {
@@ -131,7 +120,7 @@ const handleModalMessage = (e: any) => {
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 return (
-    <Card id={proyecto.projectId} sx={{ bgcolor: "#000000" }}>
+    <Card id={proyecto.projectId} sx={{ bgcolor: "#F6F3F3" }}>
         <CardHeader
             avatar={
                 <Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" sx={{ bgcolor: 'success' }} aria-label="icon">
@@ -139,11 +128,11 @@ return (
             }
             action={
                 <IconButton aria-label="settings">
-                    <MoreVertIcon sx={{ color: "#FFFFFF" }} />
+                    <MoreVertIcon sx={{ color: "#000000" }} />
                 </IconButton>
             }
-            title={proyecto.nombre}
-            subheader={<Typography variant="body2" color="white">{proyecto.fecha}</Typography>}
+            title={<Typography variant="body1" color="black">{proyecto.nombre}</Typography>}
+            subheader={<Typography variant="body2" color="black">{proyecto.fecha}</Typography>}
             sx={{ color: "#FFFFFF" }}
         />
         <CardMedia
@@ -155,7 +144,7 @@ return (
         />
         
         <CardContent>
-            <Typography variant="body2" color="white">
+            <Typography variant="body2" color="black">
                 {proyecto.descripcion}
             </Typography>
         </CardContent>
@@ -163,15 +152,15 @@ return (
 
             <Stack direction="row" gap={0.7} justifyContent="center" alignItems="center">
                 <Checkbox {...label} 
-                    icon={<FavoriteBorderIcon sx={{ color: "#FFFFFF" }} />}
+                    icon={<FavoriteBorderIcon sx={{ color: "#000000" }} />}
                     onChange={handleLike} checked={checkFavorite}
-                    checkedIcon={<FavoriteIcon sx={{ color: "#FFFFFF" }} />} />
-
+                    checkedIcon={<FavoriteIcon sx={{ color: "#000000" }} />} 
+                />
                 <IconButton onClick={handleModalMessage} aria-label="sendMessage">
-                    <ForumIcon sx={{ color: "#FFFFFF" }} />
+                    <ForumIcon sx={{ color: "#000000" }} />
                 </IconButton>
                 <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share">
-                    <SendIcon sx={{ color: "#FFFFFF" }} />
+                    <SendIcon sx={{ color: "#000000" }} />
                 </IconButton>
             </Stack>
 
@@ -181,18 +170,18 @@ return (
                 aria-expanded={expanded}
                 aria-label="show more"
             >
-                <Typography variant="body2" color="primary">
-                    Stack
+                <Typography variant="body2" color="black">
+                    Tech stack
                 </Typography>
-                <ExpandMoreIcon color="primary" />
+                <ExpandMoreIcon sx={{color: '#000000'}} />
             </ExpandMore>
             <IconButton>
-                <BookmarkBorderIcon sx={{ color: "#FFFFFF" }} />
+                <BookmarkBorderIcon sx={{ color: "#000000" }} />
             </IconButton>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-                <Typography color="white" paragraph>
+                <Typography color="black" paragraph>
                     {proyecto.stack}
                 </Typography>
             </CardContent>

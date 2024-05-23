@@ -9,9 +9,8 @@ export const Projects = () => {
 
   return (
     <div>
-      {projects.map((p: ProjectModel, index: number) => (
+      {projects.slice().reverse().map((p: ProjectModel, index: number) => (
         <div key={p.projectId}>
-          <Divider sx={{ bgcolor: "#1E1E1E" }} />
           <Project key={p.projectId} proyecto={p} indice={index} indiceMax={projects.length - 1} />
         </div>
       ))}

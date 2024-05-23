@@ -40,7 +40,7 @@ const Histories = () => {
         if (user == admin) {
             modalService.setProjectSubject(true);
         } else {
-            alertService.setAlertDataSubject({ type: "error", message: "Necesitas permisos de administrador", title: "Error al crear proyectos" });
+            alertService.setAlertDataSubject({ type: "error", message: "You need admin permission", title: "Error to add project" });
             alertService.setAlertSubject(true);
         }
     };
@@ -67,16 +67,17 @@ const Histories = () => {
 
             dispatch(deleteProject(project));
         } else {
-            alertService.setAlertDataSubject({ type: "error", message: "Necesitas permisos de administrador", title: "Error al eliminar proyecto" });
+            alertService.setAlertDataSubject({ type: "error", message: "You need admin permission", title: "Error to delete project" });
             alertService.setAlertSubject(true);
         }
 
     };
 
     return (
-        <Box sx={{ display: 'flex', overflowX: 'auto', width: '100%', backgroundColor: 'black', padding: '12px', gap: '30px' }}>
+        <Box sx={{ display: 'flex', overflowX: 'auto', width: '100%', backgroundColor: '#F6F3F3',
+                 paddingX: '15px', paddingY: '25px', gap: '33px' }}>
             <Stack justifyContent="center" alignItems="center">
-                <IconButton onClick={handleAddProject}>
+                <IconButton onClick={handleAddProject} sx={{mb: 1}}>
                     <Badge
                         anchorOrigin={{
                             vertical: 'bottom',
@@ -88,32 +89,28 @@ const Histories = () => {
                         <Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" sx={{ width: 45, height: 42 }} />
                     </Badge>
                 </IconButton>
-                <Typography color="white" align="center" aria-label="Descripcion">
-                    Tú historia
+                <Typography color="black" align="center" aria-label="Descripcion">
+                    Your project
                 </Typography>
             </Stack>
 
             <Stack direction="row" alignItems='center' justifyContent='center' spacing={5}>
-                {projects.length != 0 ? projects.map((p: Project) => (
+                {projects.length != 0 ? projects.slice().reverse().map((p: Project, index: number) => (
                     <Stack key={p.projectId}>
                         <Button onClick={(e) => handleDeleteProject(e, p)}>
-                            {/* <Typography color="white" aria-label="Descripcion">
-                                X
-                            </Typography> */}
-                            <Close fontSize="small" sx={{ color: '#FFFFFF' }} />
+                            <Close fontSize="small" sx={{ color: '#000000' }} />
                         </Button>
                         <IconButton href={'#' + p.projectId}>
-                            <Avatar src={p.imagen.data} sx={{ width: 45, height: 42, border: "2px solid #22FF0C" }} />
+                            <Avatar src={p.imagen.data} sx={{ width: 52, height: 50, border: "3px solid #22FF0C" }} />
                         </IconButton>
-                        <Typography color="white" align="center" aria-label="Descripcion">
-                            App #{(projects.indexOf(p)) + 1}
+                        <Typography variant="subtitle1" color="black" align="center" aria-label="Descripcion">
+                            Project {index+1}
                         </Typography>
                     </Stack>
                 )) : <Stack sx={{ width: "auto" }}>
                     <CircularProgress color="primary" />
                 </Stack>}
             </Stack>
-
         </Box>
     );
 };
