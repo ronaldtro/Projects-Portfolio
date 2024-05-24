@@ -30,13 +30,13 @@ const Footer = () => {
     return (
         <Box>
             <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}} elevation={1}>
-            <Divider />
+                <Divider />
                 <BottomNavigation
                     // value={value}
                     // onChange={(_event: any, newValue: SetStateAction<number>) => {
                     //     setValue(newValue);
                     // }}
-                    sx={{ bgcolor: "#F6F3F3", py: 5 }}
+                    sx={{ bgcolor: "#F6F3F3", py: 5, px: 3 }}
                 >
                     <BottomNavigationAction icon={<HomeIcon sx={{ color: "#000000" }} />} />
                     <BottomNavigationAction icon={<SearchIcon sx={{ color: "#000000" }} />} />
