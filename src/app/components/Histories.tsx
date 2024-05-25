@@ -74,7 +74,7 @@ const Histories = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', overflowX: 'auto', width: '100%', backgroundColor: '#F6F3F3',
+        <Box sx={{ display: 'flex', overflowX: 'auto', width: '100%', backgroundColor: '#ffffff',
                  paddingX: '15px', paddingY: '25px', gap: '33px' }}>
             <Stack justifyContent="center" alignItems="center">
                 <IconButton onClick={handleAddProject} sx={{mb: 1}}>

@@ -78,7 +78,7 @@ const Navbar = () => {
   }
 
   return (
-    <AppBar component="nav" sx={{ bgcolor: '#F6F3F3' }}>
+    <AppBar component="nav" sx={{ bgcolor: '#ffffff' }}>
       <Toolbar>
         <Typography
           variant="h6"
