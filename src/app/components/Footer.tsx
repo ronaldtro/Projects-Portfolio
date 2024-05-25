@@ -29,7 +29,7 @@ const Footer = () => {
 
     return (
         <AppBar position="fixed" sx={{ top: "auto", bottom: 0, width: "100%", backgroundColor: "#ffffff" }}>
-            <Toolbar sx={{ display: "flex", justifyContent: "center", gap: 3 }}>
+            <Toolbar sx={{ display: "flex", justifyContent: "center", gap: 5 }}>
                 <IconButton color="default" aria-label="home button">
                     <HomeIcon sx={{ color: "#000000" }} />
                 </IconButton>
