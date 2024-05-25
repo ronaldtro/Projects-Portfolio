@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Avatar, BottomNavigation, BottomNavigationAction, Box, Divider, Paper} from "../../../node_modules/@mui/material/index";
+import { AppBar, Avatar, BottomNavigation, BottomNavigationAction, Box, Divider, IconButton, Paper, Stack, Toolbar } from "../../../node_modules/@mui/material/index";
 import HomeIcon from '../../../node_modules/@mui/icons-material/Home';
 import SearchIcon from '../../../node_modules/@mui/icons-material/Search';
 import AddBoxOutlinedIcon from '../../../node_modules/@mui/icons-material/AddBoxOutlined';
@@ -17,7 +17,7 @@ const Footer = () => {
         modalService.setSubject(true);
     };
 
-    useEffect(() =>  {
+    useEffect(() => {
         setTimeout(() => {
             if (borderProperties == "2px solid #000000") {
                 setBorderProperties("2px solid #FFFFFF");
@@ -28,24 +28,25 @@ const Footer = () => {
     }, [borderProperties]);
 
     return (
-        <Box>
-            <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0}} elevation={1}>
-                <Divider />
-                <BottomNavigation
-                    // value={value}
-                    // onChange={(_event: any, newValue: SetStateAction<number>) => {
-                    //     setValue(newValue);
-                    // }}
-                    sx={{ bgcolor: "#F6F3F3", py: 5, px: 3 }}
-                >
-                    <BottomNavigationAction icon={<HomeIcon sx={{ color: "#000000" }} />} />
-                    <BottomNavigationAction icon={<SearchIcon sx={{ color: "#000000" }} />} />
-                    <BottomNavigationAction icon={<AddBoxOutlinedIcon sx={{ color: "#000000" }} />} />
-                    <BottomNavigationAction icon={<MovieFilterOutlinedIcon sx={{ color: "#000000" }} />} />
-                    <BottomNavigationAction onClick={handleOpen} label="" icon={<Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" sx={{border: borderProperties}} />} />
-                </BottomNavigation>
-            </Paper>
-        </Box>
+        <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, backgroundColor: "#ffffff" }}>
+            <Toolbar sx={{ display: "flex", justifyContent: "center", gap: 5 }}>
+                <IconButton color="default" aria-label="home button">
+                    <HomeIcon sx={{ color: "#000000" }} />
+                </IconButton>
+                <IconButton color="default" aria-label="button">
+                    <SearchIcon sx={{ color: "#000000" }} />
+                </IconButton>
+                <IconButton color="default" aria-label="button">
+                    <AddBoxOutlinedIcon sx={{ color: "#000000" }} />
+                </IconButton>
+                <IconButton color="default" aria-label="button">
+                    <MovieFilterOutlinedIcon sx={{ color: "#000000" }} />
+                </IconButton>
+                <IconButton onClick={handleOpen} color="default" aria-label="button">
+                    <Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" sx={{ border: borderProperties }} />
+                </IconButton>
+            </Toolbar>
+        </AppBar>
     );
 
 };
