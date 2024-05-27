@@ -11,6 +11,8 @@ import ModalShowMessages from "./components/ModalShowMessages";
 import Navbar from "./components/Navbar";
 import { Projects } from "./components/Projects";
 import { configStore } from "./redux/store";
+import { AlertComponent } from "./components/AlertComponent";
+import { ModalComponent } from "./components/ModalComponent";
 
 export default function Home() {
 
@@ -26,6 +28,7 @@ export default function Home() {
         <ModalShowMessages />
         <ModalNewMessage />
         <ModalNewProject />
+        <ModalComponent />
         <Toolbar />
         <Toolbar />
         <Footer />

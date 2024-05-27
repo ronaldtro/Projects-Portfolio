@@ -9,6 +9,8 @@ interface AlertData{
 export default class SubjectManager{
 
     private subject: Subject<boolean> = new Subject<boolean>();
+    private showModal: Subject<boolean> = new Subject<boolean>();
+    private dataShowModal: Subject<any> = new Subject<any>();
     private projectSubject: Subject<boolean> = new Subject<boolean>();
     private messageSubject: Subject<boolean> = new Subject<boolean>();
     private showMessagesSubject: Subject<boolean> = new Subject<boolean>();
@@ -22,6 +24,22 @@ export default class SubjectManager{
 
     setSubject(estado: boolean){
         this.subject.next(estado);
+    }
+
+    setShowModal(estado: boolean){
+        this.showModal.next(estado);
+    }
+
+    setDataShowModal(body: any){
+        this.dataShowModal.next(body);
+    }
+
+    getDataShowModal(){
+        return this.dataShowModal.asObservable();
+    }
+    
+    getShowModal(){
+        return this.showModal.asObservable();
     }
 
     getProjectSubject(){

@@ -29,9 +29,9 @@ const ModalShowMessages = () => {
     //Estilos del modal
     const modalStyle = {
         position: 'absolute' as 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
+        top: '60%',
+        left: '60%',
+        transform: 'translate(-60%, -60%)',
         width: '70%',
         bgcolor: '#FFFFFF',
         border: '2px solid #000',

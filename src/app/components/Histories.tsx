@@ -86,11 +86,11 @@ const Histories = () => {
                         color="primary"
                         badgeContent={<Typography variant="body2">+</Typography>}
                     >
-                        <Avatar src="https://nimble-dango-e163d9.netlify.app/Foto.png" sx={{ width: 45, height: 42 }} />
+                        <Avatar src="ronaldev_logo.svg" sx={{ width: 45, height: 42 }} />
                     </Badge>
                 </IconButton>
                 <Typography color="black" align="center" aria-label="Descripcion">
-                    Your project
+                    Add project
                 </Typography>
             </Stack>
 

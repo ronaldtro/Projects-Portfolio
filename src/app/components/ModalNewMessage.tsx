@@ -1,11 +1,14 @@
 
 import { Box, Modal, Typography, Stack, Button, TextField } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { useState, useEffect } from 'react';
 import { modalService } from '../services/modal.service';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { Message } from '../models/Message';
 import { addMessage } from '../redux/states/messages';
+import { alertService } from '../services/alert.service';
 
 export const ModalNewMessage = () => {
 
@@ -38,8 +41,10 @@ export const ModalNewMessage = () => {
             body: body
         }
 
-        if( (message.subject || message.body) == ''){
-            alert("Porfavor rellena todos los campos");
+        if ((message.subject || message.body) == '') {
+            // alert("Please, fill in all fields");
+            alertService.setAlertDataSubject({ type: "warning", message: "Please, fill in all fields", title: "Empty fields" });
+            alertService.setAlertSubject(true);
             return;
         }
 
@@ -53,10 +58,15 @@ export const ModalNewMessage = () => {
             const { msg } = await addMessageDb.json();
 
             dispatch(addMessage(msg));
+            alertService.setAlertDataSubject({ type: "success", message: "Message sent successfully", title: "Message sent" });
+            alertService.setAlertSubject(true);
 
         } catch (e: any) {
             console.log("Ha ocurrido un error");
         }
+
+        message.subject = "";
+        message.body = "";
         
         modalService.setMessageSubject(false);
     };
@@ -74,7 +84,7 @@ export const ModalNewMessage = () => {
         pt: 2,
         px: 4,
         pb: 3,
-        color: '#000000'
+        color: '#000000',
     };
 
     return (
@@ -83,26 +93,39 @@ export const ModalNewMessage = () => {
             onClose={handleClose}
             aria-labelledby="parent-modal-title"
             aria-describedby="parent-modal-description"
+            hideBackdrop={true}
         >
             <Box sx={{ ...modalStyle, width: 400 }}>
-                <Typography variant="body1" align="center" color="black" mb={2}>
-                    Nuevo mensaje
+                <Box sx={{display: "flex", justifyContent: "end"}}>
+                    <Button onClick={handleClose}>
+                        <CloseIcon sx={{color: "#000000"}}/>
+                    </Button>
+                </Box>
+                <Typography variant="body1" align="center" color="black" mb={0.5}>
+                    Send me a message
                 </Typography>
+                <Box sx={{ display: "flex", justifyContent: "center", gap: 1, marginBottom: 3 }}>
+                    <MailOutlineIcon />
+                </Box>
                 <Stack justifyContent="center" alignItems="center" gap={2} mb={0.5}>
                     <Stack
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <TextField value={subject} onChange={(e) => setSubject(e.target.value)} id="outlined-basic" label="Asunto" variant="outlined" />
+                        <TextField value={subject} onChange={(e) => setSubject(e.target.value)} 
+                            id="outlined-basic" label="Subject" variant="outlined"
+                         />
                     </Stack>
                     <Stack
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <TextField value={body} onChange={(e) => setBody(e.target.value)} id="outlined-basic" label="Cuerpo del mensaje" variant="outlined" />
+                        <TextField value={body} onChange={(e) => setBody(e.target.value)}
+                             id="outlined-basic" label="Body" variant="outlined"
+                        />
                     </Stack>
 
-                    <Button onClick={handleMessage} variant="outlined">Enviar</Button>
+                    <Button onClick={handleMessage} variant="outlined">Send</Button>
                 </Stack>
             </Box>
         </Modal>

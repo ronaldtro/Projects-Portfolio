@@ -26,7 +26,7 @@ export const AlertComponent = () => {
     }
 
     return (
-        <Collapse in={isAlert} sx={{ width: '100%' }} >
+        <Collapse in={isAlert} sx={{ width: '100%'}} >
             <Alert variant="filled" severity={alertData.type}>
                 <AlertTitle>{alertData.title}</AlertTitle>
                 {alertData.message}

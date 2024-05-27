@@ -147,30 +147,6 @@ const ModalBox = () => {
                         </Typography>
                     </Stack>
                 </Stack>
-
-                <Stack
-                    justifyContent="center"
-                    direction="row"
-                    alignItems="center"
-                    mt={1}
-                >
-                    <IconButton onClick={(e) => externalPage(e, "linkedin")}>
-                        <BsLinkedin size={20} />
-                    </IconButton>
-                    <IconButton onClick={(e) => externalPage(e, "github")}>
-                        <BsGithub size={20} />
-                    </IconButton>
-                    <IconButton onClick={(e) => externalPage(e, "instagram")}>
-                        <FaInstagram size={20} />
-                    </IconButton>
-                </Stack>
-
-                <Divider sx={{ bgcolor: "#1E1E1E" }} />
-
-                <Typography variant="body2" align="center" color="black">ronald.2415@hotmail.com</Typography>
-                <Typography variant="body2" align="center" color="black">Ing. de sistemas</Typography>
-                <Typography variant="body2" align="center" color="black">+57 3137395166</Typography>
-                <Typography variant="body2" align="center" color="black">Ronald C.</Typography>
             </Box>
         </Modal>
     );

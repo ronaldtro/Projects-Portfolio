@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import ForumIcon from '@mui/icons-material/Forum';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { AppBar, Badge, IconButton, Toolbar, Typography } from '@mui/material/index';
+import { AppBar, Avatar, Badge, Box, IconButton, Toolbar, Typography } from '@mui/material/index';
 //React Redux
 import { useDispatch, useSelector } from "react-redux";
 import { addMessages } from "../redux/states/messages";
@@ -79,25 +79,29 @@ const Navbar = () => {
 
   return (
     <AppBar component="nav" sx={{ bgcolor: '#ffffff' }}>
-      <Toolbar>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 1, color: '#000000'}}
-        >
-          𝓡𝓸𝓷𝓪𝓵𝓭 𝓓𝓮𝓿 <KeyboardArrowDownIcon />
-        </Typography>
-
-        <IconButton aria-label="Favorites" disabled>
-          <Badge badgeContent={likes.length} max={50} color="error">
-            <FavoriteBorderIcon sx={{ color: "#000000" }} />
-          </Badge>
-        </IconButton>
-        <IconButton onClick={handleShowMessages} aria-label="Messages">
-          <Badge badgeContent={messages.length} max={50} color="error">
-            <ForumIcon sx={{ color: "#000000" }} />
-          </Badge>
-        </IconButton>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <Avatar alt="yo" src="ronaldev_logo.svg" sx={{ height: 30, width: 30 }} />
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, color: '#000000' }}
+          >
+            𝓡𝓸𝓷𝓪𝓵𝓭 𝓓𝓮𝓿
+          </Typography>
+        </Box>
+        <Box>
+          <IconButton aria-label="Favorites" disabled>
+            <Badge badgeContent={likes.length} max={50} color="error">
+              <FavoriteBorderIcon sx={{ color: "#000000" }} />
+            </Badge>
+          </IconButton>
+          <IconButton onClick={handleShowMessages} aria-label="Messages">
+            <Badge badgeContent={messages.length} max={50} color="error">
+              <ForumIcon sx={{ color: "#000000" }} />
+            </Badge>
+          </IconButton>
+        </Box>
       </Toolbar>
       <AlertComponent />
     </AppBar>
