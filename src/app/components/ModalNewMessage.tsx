@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Message } from '../models/Message';
 import { addMessage } from '../redux/states/messages';
 import { alertService } from '../services/alert.service';
+import SendIcon from '@mui/icons-material/Send';
 
 export const ModalNewMessage = () => {
 
@@ -104,7 +105,7 @@ export const ModalNewMessage = () => {
                     Send me a dm
                 </Typography>
                 <Box sx={{ display: "flex", justifyContent: "center", gap: 1, marginBottom: 3 }}>
-                    <MailOutlineIcon />
+                    <SendIcon sx={{color: "#000000"}}/>
                 </Box>
                 <Stack justifyContent="center" alignItems="center" gap={2} mb={0.5}>
                     <Stack
