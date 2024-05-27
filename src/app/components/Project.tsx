@@ -128,7 +128,7 @@ return (
             }
             action={
                 <IconButton aria-label="settings">
-                    <MoreVertIcon sx={{ color: "#000000" }} />
+                    {/* <MoreVertIcon sx={{ color: "#000000" }} /> */}
                 </IconButton>
             }
             title={<Typography variant="body1" color="black">{proyecto.nombre}</Typography>}
@@ -159,9 +159,9 @@ return (
                 <IconButton onClick={handleModalMessage} aria-label="sendMessage">
                     <ForumIcon sx={{ color: "#000000" }} />
                 </IconButton>
-                <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share">
+                {/* <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share">
                     <SendIcon sx={{ color: "#000000" }} />
-                </IconButton>
+                </IconButton> */}
             </Stack>
 
             <ExpandMore
@@ -175,9 +175,9 @@ return (
                 </Typography>
                 <ExpandMoreIcon sx={{color: '#000000'}} />
             </ExpandMore>
-            <IconButton>
+            {/* <IconButton>
                 <BookmarkBorderIcon sx={{ color: "#000000" }} />
-            </IconButton>
+            </IconButton> */}
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>

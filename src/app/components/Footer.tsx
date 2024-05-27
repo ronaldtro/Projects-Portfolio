@@ -6,6 +6,7 @@ import {
 } from "../../../node_modules/@mui/material/index";
 import HomeIcon from '../../../node_modules/@mui/icons-material/Home';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
+import SendIcon from '@mui/icons-material/Send';
 import SearchIcon from '../../../node_modules/@mui/icons-material/Search';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import AddBoxOutlinedIcon from '../../../node_modules/@mui/icons-material/AddBoxOutlined';
@@ -25,10 +26,14 @@ const Footer = () => {
         modalService.setSubject(true);
     };
 
+    function handleDM(){
+        modalService.setMessageSubject(true);
+    }
+
     function showContact() {
 
         modalService.setDataShowModal(<>
-            <Box sx={{padding: 5}}>
+            <Box sx={{ padding: 5 }}>
                 <Stack
                     justifyContent="center"
                     alignItems="center"
@@ -38,7 +43,7 @@ const Footer = () => {
                 >
 
                     <Link href="https://www.linkedin.com/in/ronaldtro">
-                        <BsLinkedin size={30} color="black"/>
+                        <BsLinkedin size={30} color="black" />
                     </Link>
                     <Link href="#">
                         <BsGithub size={30} color="black" />
@@ -85,6 +90,11 @@ const Footer = () => {
                     <BottomNavigationAction
                         label={<Typography sx={{ color: '#000000' }}>Home</Typography>}
                         icon={<HomeIcon sx={{ color: "#000000" }} />}
+                    />
+                    <BottomNavigationAction
+                        onClick={handleDM}
+                        label={<Typography sx={{ color: '#000000' }}>Dm</Typography>}
+                        icon={<SendIcon sx={{ color: "#000000" }} />}
                     />
                     <BottomNavigationAction
                         onClick={showContact}

@@ -41,7 +41,7 @@ export const ModalNewMessage = () => {
             body: body
         }
 
-        if ((message.subject || message.body) == '') {
+        if (message.subject == '' || message.body == '') {
             // alert("Please, fill in all fields");
             alertService.setAlertDataSubject({ type: "warning", message: "Please, fill in all fields", title: "Empty fields" });
             alertService.setAlertSubject(true);
@@ -65,9 +65,8 @@ export const ModalNewMessage = () => {
             console.log("Ha ocurrido un error");
         }
 
-        message.subject = "";
-        message.body = "";
-        
+        setSubject("");
+        setBody("");
         modalService.setMessageSubject(false);
     };
 
@@ -102,7 +101,7 @@ export const ModalNewMessage = () => {
                     </Button>
                 </Box>
                 <Typography variant="body1" align="center" color="black" mb={0.5}>
-                    Send me a message
+                    Send me a dm
                 </Typography>
                 <Box sx={{ display: "flex", justifyContent: "center", gap: 1, marginBottom: 3 }}>
                     <MailOutlineIcon />
