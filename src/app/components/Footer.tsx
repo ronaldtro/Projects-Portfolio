@@ -83,7 +83,7 @@ const Footer = () => {
                     <LinkedInIcon />
                 </IconButton>
                 <IconButton onClick={handleOpen} color="default" aria-label="button">
-                    <Avatar src="ronaldev_logo.svg" sx={{ border: borderProperties }} />
+                    <Avatar src="ronaldev_logo.png" sx={{ border: borderProperties }} />
                 </IconButton> */}
                 <BottomNavigation showLabels value={navigateOptions}
                     onChange={(event, newValue) => setNavigateOptions(newValue)}>
@@ -104,7 +104,7 @@ const Footer = () => {
                     <BottomNavigationAction
                         onClick={handleOpen}
                         label={<Typography sx={{ color: '#000000' }}>Profile</Typography>}
-                        icon={<Avatar src="ronaldev_logo.svg" sx={{ border: borderProperties }} />}
+                        icon={<Avatar src="ronaldev_logo.png" sx={{ border: borderProperties }} />}
                     />
                 </BottomNavigation>
             </Toolbar>

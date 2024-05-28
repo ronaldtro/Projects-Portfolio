@@ -81,7 +81,7 @@ const Navbar = () => {
     <AppBar component="nav" sx={{ bgcolor: '#ffffff' }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box sx={{ display: "flex", gap: 2 }}>
-          <Avatar alt="yo" src="ronaldev_logo.svg" sx={{ height: 30, width: 30 }} />
+          <Avatar alt="yo" src="ronaldev_logo.png" sx={{ height: 30, width: 30 }} />
           <Typography
             variant="h6"
             component="div"

@@ -86,7 +86,7 @@ const Histories = () => {
                         color="primary"
                         badgeContent={<Typography variant="body2">+</Typography>}
                     >
-                        <Avatar src="ronaldev_logo.svg" sx={{ width: 45, height: 42 }} />
+                        <Avatar src="ronaldev_logo.png" sx={{ width: 45, height: 42 }} />
                     </Badge>
                 </IconButton>
                 <Typography color="black" align="center" aria-label="Descripcion">

@@ -123,7 +123,7 @@ return (
     <Card id={proyecto.projectId} sx={{ bgcolor: "#F6F3F3" }}>
         <CardHeader
             avatar={
-                <Avatar src="ronaldev_logo.svg" sx={{ bgcolor: 'success' }} aria-label="icon">
+                <Avatar src="ronaldev_logo.png" sx={{ bgcolor: 'success' }} aria-label="icon">
                 </Avatar>
             }
             action={
