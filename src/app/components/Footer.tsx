@@ -45,7 +45,7 @@ const Footer = () => {
                     <Link href="https://www.linkedin.com/in/ronaldtro">
                         <BsLinkedin size={30} color="black" />
                     </Link>
-                    <Link href="#">
+                    <Link href="https://github.com/ronaldtro">
                         <BsGithub size={30} color="black" />
                     </Link>
                     {/* <Link href="#">

@@ -102,7 +102,7 @@ export const ModalNewMessage = () => {
                     </Button>
                 </Box>
                 <Typography variant="body1" align="center" color="black" mb={0.5}>
-                    Send me a dm
+                    Send me a direct message
                 </Typography>
                 <Box sx={{ display: "flex", justifyContent: "center", gap: 1, marginBottom: 3 }}>
                     <SendIcon sx={{color: "#000000"}}/>
