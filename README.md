@@ -40,7 +40,7 @@ npm run dev
 ```
 
 ## Preview
-![https://raw.githubusercontent.com/ronaldtro/projectsImages/main/PortafolioOnlineGif.gif]
+![gif](https://raw.githubusercontent.com/ronaldtro/projectsImages/main/PortafolioOnlineGif.gif)
 
 ## Licencia
 Este proyecto es de codigo abierto y esta licenciado bajo [MIT](/LICENSE).
