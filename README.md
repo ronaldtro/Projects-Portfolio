@@ -5,7 +5,7 @@ Portafolio instagram style, es una aplicacion web que permite gestionar y añadi
 - [Introduccion](#introduccion)
 - [Como empezar](#como-empezar)
     - [Configuracion rapida](#configuracion-rapida)
-- [Ejemplo](#ejemplo)
+- [Preview](#preview)
 - [Licencia](#licencia)
 - [Referencias](#referencias)
 
