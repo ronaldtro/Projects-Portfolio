@@ -30,6 +30,17 @@ Prerequisitos:
 1. Node.js
 2. Node.js package manager: npm
 
+.env
+```bash
+    MONGODB_URI = connection string - mongoDB cluster
+    SERVER_PROD = website base url
+    ADMIN = admin secret password
+```
+localStorage
+```bash
+    userId: ADMIN | randomId
+```
+
 dependencies install
 ```bash
 npm install 
