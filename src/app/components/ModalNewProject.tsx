@@ -150,7 +150,7 @@ const ModalNewProject = () => {
         transform: 'translate(-50%, -50%)',
         width: 400,
         bgcolor: '#F7F7F7',
-        border: '2px solid #000000',
+        border: '2px solid var(--secondary-color)',
         boxShadow: 24,
         pt: 2,
         px: 4,

@@ -20,7 +20,7 @@ const Footer = () => {
 
     //Para la paginacion de la barra
     // const [value, setValue] = useState(0);
-    const [borderProperties, setBorderProperties] = useState("2px solid #FFFFFF");
+    const [borderProperties, setBorderProperties] = useState("2px solid var(--primary-color)");
     const [navigateOptions, setNavigateOptions] = useState("");
     const handleOpen = () => {
         modalService.setSubject(true);
@@ -43,22 +43,22 @@ const Footer = () => {
                 >
 
                     <Link href="https://www.linkedin.com/in/ronaldtro">
-                        <BsLinkedin size={30} color="black" />
+                        <BsLinkedin size={30} color="var(--secondary-color)" />
                     </Link>
                     <Link href="https://github.com/ronaldtro">
-                        <BsGithub size={30} color="black" />
+                        <BsGithub size={30} color="var(--secondary-color)" />
                     </Link>
                     {/* <Link href="#">
                         <FaInstagram size={30} color="black" />
                     </Link> */}
                 </Stack>
 
-                <Divider sx={{ bgcolor: "#1E1E1E", marginBottom: 2 }} />
+                <Divider sx={{ bgcolor: "#11E1E", marginBottom: 2 }} />
 
-                <Typography variant="body2" align="center" color="black" mb={1}>ronald.2415@hotmail.com</Typography>
-                <Typography variant="body2" align="center" color="black" mb={1}>Ing. de sistemas</Typography>
-                <Typography variant="body2" align="center" color="black" mb={1}>+57 3137395166</Typography>
-                <Typography variant="body2" align="center" color="black">Ronald C.</Typography>
+                <Typography variant="body2" align="center" color="var(--secondary-color)" mb={1}>ronald.2415@hotmail.com</Typography>
+                <Typography variant="body2" align="center" color="var(--secondary-color)" mb={1}>Ing. de sistemas</Typography>
+                <Typography variant="body2" align="center" color="var(--secondary-color)" mb={1}>+57 3137395166</Typography>
+                <Typography variant="body2" align="center" color="var(--secondary-color)">Ronald C.</Typography>
             </Box>
         </>)
         modalService.setShowModal(true);
@@ -67,44 +67,45 @@ const Footer = () => {
     return (
         <AppBar position="fixed" sx={{
             top: "auto", bottom: 0, width: "100%",
-            backgroundColor: "#ffffff", paddingY: 1
+            backgroundColor: "var(--primary-color)", paddingY: 1
         }}>
             <Toolbar sx={{ display: "flex", justifyContent: "center", gap: 3 }}>
                 {/* <IconButton color="default" aria-label="home button">
-                    <HomeIcon sx={{ color: "#000000" }} />
+                    <HomeIcon sx={{ color: "var(--secondary-color)" }} />
                 </IconButton>
                 <IconButton color="default" aria-label="button">
-                    <SearchIcon sx={{ color: "#000000" }} />
+                    <SearchIcon sx={{ color: "var(--secondary-color)" }} />
                 </IconButton>
                 <IconButton color="default" aria-label="button">
-                    <AddBoxOutlinedIcon sx={{ color: "#000000" }} />
+                    <AddBoxOutlinedIcon sx={{ color: "var(--secondary-color)" }} />
                 </IconButton>
                 <IconButton color="default" aria-label="button">
                     <LinkedInIcon />
                 </IconButton>
                 <IconButton onClick={handleOpen} color="default" aria-label="button">
-                    <Avatar src="ronaldev_logo.png" sx={{ border: borderProperties }} />
+                    <Avatar src="ronald_logo.png" sx={{ border: borderProperties }} />
                 </IconButton> */}
                 <BottomNavigation showLabels value={navigateOptions}
+                    sx={{backgroundColor: "var(--primary-color)"}}
                     onChange={(event, newValue) => setNavigateOptions(newValue)}>
                     <BottomNavigationAction
-                        label={<Typography sx={{ color: '#000000' }}>Home</Typography>}
-                        icon={<HomeIcon sx={{ color: "#000000" }} />}
+                        label={<Typography sx={{ color: 'var(--secondary-color)' }}>Home</Typography>}
+                        icon={<HomeIcon sx={{ color: "var(--secondary-color)" }} />}
                     />
                     <BottomNavigationAction
                         onClick={handleDM}
-                        label={<Typography sx={{ color: '#000000' }}>Dm</Typography>}
-                        icon={<SendIcon sx={{ color: "#000000" }} />}
+                        label={<Typography sx={{ color: 'var(--secondary-color)' }}>Dm</Typography>}
+                        icon={<SendIcon sx={{ color: "var(--secondary-color)" }} />}
                     />
                     <BottomNavigationAction
                         onClick={showContact}
-                        label={<Typography sx={{ color: '#000000' }}>Contact</Typography>}
-                        icon={<ContactPageIcon sx={{ color: '#000000' }} />}
+                        label={<Typography sx={{ color: 'var(--secondary-color)' }}>Contact</Typography>}
+                        icon={<ContactPageIcon sx={{ color: 'var(--secondary-color)' }} />}
                     />
                     <BottomNavigationAction
                         onClick={handleOpen}
-                        label={<Typography sx={{ color: '#000000' }}>Profile</Typography>}
-                        icon={<Avatar src="ronaldev_logo.png" sx={{ border: borderProperties }} />}
+                        label={<Typography sx={{ color: 'var(--secondary-color)' }}>Profile</Typography>}
+                        icon={<Avatar src="ronald_logo.png" sx={{ border: borderProperties }} />}
                     />
                 </BottomNavigation>
             </Toolbar>

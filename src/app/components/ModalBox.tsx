@@ -15,7 +15,7 @@ const ModalBox = () => {
     const openModal$ = modalService.getSubject();
 
     useEffect(() => {
-        openModal$.subscribe( (estado: boolean) => {
+        openModal$.subscribe((estado: boolean) => {
             setOpen(estado);
         });
     });
@@ -31,14 +31,14 @@ const ModalBox = () => {
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: 400,
-        bgcolor: '#FFFFFF',
+        bgcolor: 'var(--primary-color)',
         border: '2px solid #000',
         boxShadow: 24,
-        color: '#000000',
+        color: 'var(--secondary-color)',
         p: 5
     };
 
-    const externalPage = (e:any, tipo: string) => {
+    const externalPage = (e: any, tipo: string) => {
         e.preventDefault();
         if (tipo == "linkedin") {
             window.open('https://www.linkedin.com/in/ronaldtro', '_blank');
@@ -61,20 +61,20 @@ const ModalBox = () => {
             aria-labelledby="parent-modal-title"
             aria-describedby="parent-modal-description"
         >
-            <Box sx={{...modalStyle}}>
+            <Box sx={{ ...modalStyle }}>
 
-                <Typography variant="h3" align="right" color="black" mb={4}>
-                    <IconButton onClick={handleClose}>
-                        <GrClose color="black" size={25} />
+                <Stack justifyContent="end" alignItems="end" >
+                    <IconButton onClick={handleClose} sx={{color: "#ffffff"}}>
+                        X
                     </IconButton>
-                </Typography>
+                </Stack>
 
-                <Typography variant="h6" align="center" color="black" mb={3}>
+                <Typography variant="h6" align="center" mb={3}>
                     <FaRegHandSpock /> Hi, My name is Ronald
                 </Typography>
 
                 <Typography aria-label="ProfileDescription" align="justify" mb={4}>
-                    Actually i work in the analysis and web apps development. 
+                    Actually i work in the analysis and web apps development.
                     I worked and have experience with: Angular, React, Next.js, Asp.net 7
                     , between others technologies.
                 </Typography>
@@ -91,7 +91,7 @@ const ModalBox = () => {
                         alignItems="center"
                     >
                         <FaReact size={35} />
-                        <Typography variant="body2" color="black">
+                        <Typography variant="body2">
                             React
                         </Typography>
                     </Stack>
@@ -100,19 +100,19 @@ const ModalBox = () => {
                         alignItems="center"
                     >
                         <FaAngular size={35} />
-                        <Typography variant="body2" color="black">
+                        <Typography variant="body2">
                             Angular
                         </Typography>
                     </Stack>
                     <Stack justifyContent="center" alignItems="center">
-                        <FaNode size={35}/>
-                        <Typography variant="body2" color="black">
+                        <FaNode size={35} />
+                        <Typography variant="body2">
                             NodeJs
                         </Typography>
                     </Stack>
                     <Stack justifyContent="center" alignItems="center">
                         <BsMicrosoft />
-                        <Typography variant="body2" color="black">
+                        <Typography variant="body2">
                             Asp.net core
                         </Typography>
                     </Stack>
@@ -124,7 +124,7 @@ const ModalBox = () => {
                         alignItems="center"
                     >
                         <FaBootstrap size={35} />
-                        <Typography variant="body2" color="black">
+                        <Typography variant="body2">
                             Bootstrap
                         </Typography>
                     </Stack>
@@ -133,7 +133,7 @@ const ModalBox = () => {
                         alignItems="center"
                     >
                         <BiLogoTailwindCss size={35} />
-                        <Typography variant="body2" color="black">
+                        <Typography variant="body2">
                             Tailwind Css
                         </Typography>
                     </Stack>
@@ -142,7 +142,7 @@ const ModalBox = () => {
                         alignItems="center"
                     >
                         <SiMui size={35} />
-                        <Typography variant="body2" color="black">
+                        <Typography variant="body2">
                             MUI
                         </Typography>
                     </Stack>

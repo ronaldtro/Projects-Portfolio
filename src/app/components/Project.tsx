@@ -41,7 +41,7 @@ const Project: React.FC<projectProps> = ({ proyecto, indice, indiceMax }) => {
 
     const [expanded, setExpanded] = useState<boolean>(false);
     const [checkFavorite, setCheckFavorite] = useState(false);
-    const [borderProperties, setBorderProperties] = useState("2px solid #FFFFFF");
+    const [borderProperties, setBorderProperties] = useState("2px solid var(--primary-color)");
 
     //Verificar si el usuario ya le ha dado like
     useEffect(() => {
@@ -120,20 +120,20 @@ const handleModalMessage = (e: any) => {
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 return (
-    <Card id={proyecto.projectId} sx={{ bgcolor: "#F6F3F3" }}>
+    <Card id={proyecto.projectId} sx={{ bgcolor: "var(--secondary-color)" }}>
         <CardHeader
             avatar={
-                <Avatar src="ronaldev_logo.png" sx={{ bgcolor: 'success' }} aria-label="icon">
+                <Avatar src="ronald_logo.png" sx={{ bgcolor: 'success' }} aria-label="icon">
                 </Avatar>
             }
             action={
                 <IconButton aria-label="settings">
-                    {/* <MoreVertIcon sx={{ color: "#000000" }} /> */}
+                    {/* <MoreVertIcon sx={{ color: "var(--secondary-color)" }} /> */}
                 </IconButton>
             }
             title={<Typography variant="body1" color="black">{proyecto.nombre}</Typography>}
             subheader={<Typography variant="body2" color="black">{proyecto.fecha}</Typography>}
-            sx={{ color: "#FFFFFF" }}
+            sx={{ color: "var(--primary-color)" }}
         />
         <CardMedia
             component="img"
@@ -152,15 +152,15 @@ return (
 
             <Stack direction="row" gap={0.7} justifyContent="center" alignItems="center">
                 <Checkbox {...label} 
-                    icon={<FavoriteBorderIcon sx={{ color: "#000000" }} />}
+                    icon={<FavoriteBorderIcon sx={{ color: "var(--secondary-color)" }} />}
                     onChange={handleLike} checked={checkFavorite}
-                    checkedIcon={<FavoriteIcon sx={{ color: "#000000" }} />} 
+                    checkedIcon={<FavoriteIcon sx={{ color: "var(--secondary-color)" }} />} 
                 />
                 <IconButton onClick={handleModalMessage} aria-label="sendMessage">
-                    <ForumIcon sx={{ color: "#000000" }} />
+                    <ForumIcon sx={{ color: "var(--secondary-color)" }} />
                 </IconButton>
                 {/* <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share">
-                    <SendIcon sx={{ color: "#000000" }} />
+                    <SendIcon sx={{ color: "var(--secondary-color)" }} />
                 </IconButton> */}
             </Stack>
 
@@ -173,10 +173,10 @@ return (
                 <Typography variant="body2" color="black">
                     Tech stack
                 </Typography>
-                <ExpandMoreIcon sx={{color: '#000000'}} />
+                <ExpandMoreIcon sx={{color: 'var(--secondary-color)'}} />
             </ExpandMore>
             {/* <IconButton>
-                <BookmarkBorderIcon sx={{ color: "#000000" }} />
+                <BookmarkBorderIcon sx={{ color: "var(--secondary-color)" }} />
             </IconButton> */}
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>

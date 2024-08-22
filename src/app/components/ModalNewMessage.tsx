@@ -78,13 +78,13 @@ export const ModalNewMessage = () => {
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: 400,
-        bgcolor: '#FFFFFF',
+        bgcolor: 'var(--primary-color)',
         border: '2px solid #000',
         boxShadow: 24,
         pt: 2,
         px: 4,
         pb: 3,
-        color: '#000000',
+        color: 'var(--secondary-color)',
     };
 
     return (
@@ -96,36 +96,42 @@ export const ModalNewMessage = () => {
             hideBackdrop={true}
         >
             <Box sx={{ ...modalStyle, width: 400 }}>
-                <Box sx={{display: "flex", justifyContent: "end"}}>
+                <Box sx={{ display: "flex", justifyContent: "end" }}>
                     <Button onClick={handleClose}>
-                        <CloseIcon sx={{color: "#000000"}}/>
+                        <CloseIcon sx={{ color: "var(--secondary-color)" }} />
                     </Button>
                 </Box>
-                <Typography variant="body1" align="center" color="black" mb={0.5}>
+                <Typography variant="body1" align="center" mb={0.5}>
                     Send me a direct message
                 </Typography>
                 <Box sx={{ display: "flex", justifyContent: "center", gap: 1, marginBottom: 3 }}>
-                    <SendIcon sx={{color: "#000000"}}/>
+                    <SendIcon sx={{ color: "var(--secondary-color)" }} />
                 </Box>
                 <Stack justifyContent="center" alignItems="center" gap={2} mb={0.5}>
                     <Stack
-                        justifyContent="center"
-                        alignItems="center"
+                        justifyContent="start"
+                        alignItems="start"
                     >
-                        <TextField value={subject} onChange={(e) => setSubject(e.target.value)} 
-                            id="outlined-basic" label="Subject" variant="outlined"
-                         />
+                        <Typography variant='body1'>
+                            Subject
+                        </Typography>
+                        <TextField value={subject} onChange={(e) => setSubject(e.target.value)} sx={{ backgroundColor: '#FFFFFF' }}
+                            id="outlined-basic" variant="outlined"
+                        />
                     </Stack>
                     <Stack
-                        justifyContent="center"
-                        alignItems="center"
+                        justifyContent="start"
+                        alignItems="start"
                     >
-                        <TextField value={body} onChange={(e) => setBody(e.target.value)}
-                             id="outlined-basic" label="Body" variant="outlined"
+                        <Typography variant='body1'>
+                            Body
+                        </Typography>
+                        <TextField value={body} onChange={(e) => setBody(e.target.value)} sx={{ backgroundColor: '#FFFFFF' }}
+                            id="outlined-basic" variant="outlined"
                         />
                     </Stack>
 
-                    <Button onClick={handleMessage} variant="outlined">Send</Button>
+                    <Button onClick={handleMessage} color='success' variant="outlined">Send</Button>
                 </Stack>
             </Box>
         </Modal>

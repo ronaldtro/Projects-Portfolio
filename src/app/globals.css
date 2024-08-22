@@ -11,3 +11,9 @@ body {
   overflow-x: hidden;
   background-color: #F6F3F3;
 }
+
+:root{
+  --primary-color: #000000;
+  --secondary-color: #ffffff;
+  --green-color: #c1ff72;
+}

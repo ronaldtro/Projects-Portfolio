@@ -33,11 +33,11 @@ const ModalShowMessages = () => {
         left: '60%',
         transform: 'translate(-60%, -60%)',
         width: '70%',
-        bgcolor: '#FFFFFF',
+        bgcolor: 'var(--primary-color)',
         border: '2px solid #000',
         boxShadow: 24,
         p: 5,
-        color: '#000000'
+        color: 'var(--secondary-color)'
     };
 
     const handleDeleteMessage = async (e: any, id: any) => {

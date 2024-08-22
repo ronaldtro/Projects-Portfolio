@@ -1,5 +1,5 @@
-# Portafolio instagram style
-Portafolio instagram style, es una aplicacion web que permite gestionar y añadir los proyectos que vaya realizando en el camino de una forma interactiva, ademas permite que los visitantes puedan interactuar con el contenido y enviarme mensajes.
+# Projects Portfolio
+Projects Portfolio, es una aplicacion web que permite agregar, gestionar y visualizar proyectos de desarrollo de software. Además, permite a los visitantes interactuar con el contenido y enviar mensajes.
 
 ## Tabla de contenido
 - [Introduccion](#introduccion)
@@ -13,12 +13,12 @@ Portafolio instagram style, es una aplicacion web que permite gestionar y añadi
 La webApp fue realizada con: 
 Next.js, MUI, MongoDb y Redux para el estado de la aplicacion.
 
-La webApp permite al administrador:
+Permite al administrador:
 - 🖼️ Añadir proyectos o publicaciones (historias), añadir datos varios y subir una imagen o gif.
 - ❌ Eliminar los proyectos o publicaciones.
 - 💌 Revisar los mensajes en bandeja.
 
-La webApp permite a los usuarios:
+Permite a los usuarios:
 - 🖼️ Ver los proyectos o publicaciones.
 - ♥️ Dar Like o Me gusta al contenido.
 - 📨 Enviar mensajes al admin.

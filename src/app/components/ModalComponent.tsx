@@ -25,13 +25,13 @@ export function ModalComponent(){
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: 400,
-        bgcolor: '#FFFFFF',
+        bgcolor: 'var(--primary-color)',
         border: '2px solid #000',
         boxShadow: 24,
         pt: 2,
         px: 4,
         pb: 3,
-        color: '#000000',
+        color: 'var(--secondary-color)',
     };
 
     return (
