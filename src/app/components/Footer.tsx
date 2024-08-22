@@ -89,18 +89,19 @@ const Footer = () => {
                     sx={{backgroundColor: "var(--primary-color)"}}
                     onChange={(event, newValue) => setNavigateOptions(newValue)}>
                     <BottomNavigationAction
+                        href="#home"
                         label={<Typography sx={{ color: 'var(--secondary-color)' }}>Home</Typography>}
-                        icon={<HomeIcon sx={{ color: "var(--secondary-color)" }} />}
+                        icon={<HomeIcon sx={{ color: "var(--green-color)" }} />}
                     />
                     <BottomNavigationAction
                         onClick={handleDM}
                         label={<Typography sx={{ color: 'var(--secondary-color)' }}>Dm</Typography>}
-                        icon={<SendIcon sx={{ color: "var(--secondary-color)" }} />}
+                        icon={<SendIcon sx={{ color: "var(--green-color)" }} />}
                     />
                     <BottomNavigationAction
                         onClick={showContact}
                         label={<Typography sx={{ color: 'var(--secondary-color)' }}>Contact</Typography>}
-                        icon={<ContactPageIcon sx={{ color: 'var(--secondary-color)' }} />}
+                        icon={<ContactPageIcon sx={{ color: 'var(--green-color)' }} />}
                     />
                     <BottomNavigationAction
                         onClick={handleOpen}

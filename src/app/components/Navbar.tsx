@@ -92,13 +92,17 @@ const Navbar = () => {
         </Box>
         <Box>
           <IconButton aria-label="Favorites" disabled>
-            <Badge badgeContent={likes.length} max={50} color="error">
-              <FavoriteBorderIcon sx={{ color: "var(--secondary-color)" }} />
+            <Badge badgeContent={<Typography sx={{backgroundColor: "var(--secondary-color)",
+                                borderRadius: "100px", paddingX: "6px", color: "var(--primary-color)", fontSize: "13px",
+                                fontWeight: "500"}}>{likes.length}</Typography>} max={50}>
+              <FavoriteBorderIcon sx={{ color: "var(--green-color)" }} />
             </Badge>
           </IconButton>
           <IconButton onClick={handleShowMessages} aria-label="Messages">
-            <Badge badgeContent={messages.length} max={50} color="error">
-              <ForumIcon sx={{ color: "var(--secondary-color)" }} />
+            <Badge badgeContent={<Typography sx={{backgroundColor: "var(--secondary-color)",
+                                borderRadius: "100px", paddingX: "6px", color: "var(--primary-color)", fontSize: "13px",
+                                fontWeight: "500"}}>{messages.length}</Typography>} max={50}>
+              <ForumIcon sx={{ color: "var(--green-color)" }} />
             </Badge>
           </IconButton>
         </Box>
