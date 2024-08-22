@@ -78,14 +78,14 @@ const Navbar = () => {
   }
 
   return (
-    <AppBar component="nav" sx={{ bgcolor: '#ffffff' }}>
+    <AppBar component="nav" sx={{ bgcolor: 'var(--primary-color)' }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box sx={{ display: "flex", gap: 2 }}>
-          <Avatar alt="yo" src="ronaldev_logo.png" sx={{ height: 30, width: 30 }} />
+          <Avatar alt="yo" src="ronald_logo.png" sx={{ height: 30, width: 30 }} />
           <Typography
             variant="h6"
             component="div"
-            sx={{ flexGrow: 1, color: '#000000' }}
+            sx={{ flexGrow: 1, color: 'var(--secondary-color)' }}
           >
             𝓡𝓸𝓷𝓪𝓵𝓭 𝓓𝓮𝓿
           </Typography>
@@ -93,12 +93,12 @@ const Navbar = () => {
         <Box>
           <IconButton aria-label="Favorites" disabled>
             <Badge badgeContent={likes.length} max={50} color="error">
-              <FavoriteBorderIcon sx={{ color: "#000000" }} />
+              <FavoriteBorderIcon sx={{ color: "var(--secondary-color)" }} />
             </Badge>
           </IconButton>
           <IconButton onClick={handleShowMessages} aria-label="Messages">
             <Badge badgeContent={messages.length} max={50} color="error">
-              <ForumIcon sx={{ color: "#000000" }} />
+              <ForumIcon sx={{ color: "var(--secondary-color)" }} />
             </Badge>
           </IconButton>
         </Box>
