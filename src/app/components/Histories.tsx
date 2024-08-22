@@ -74,7 +74,7 @@ const Histories = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex', overflowX: 'auto', width: '100%', backgroundColor: 'var(--primary-color)',
+        <Box id="home" sx={{ display: 'flex', overflowX: 'auto', width: '100%', backgroundColor: 'var(--primary-color)',
                  paddingX: '15px', paddingY: '25px', gap: '33px' }}>
             <Stack justifyContent="center" alignItems="center">
                 <IconButton onClick={handleAddProject} sx={{mb: 1}}>
@@ -83,14 +83,19 @@ const Histories = () => {
                             vertical: 'bottom',
                             horizontal: 'right',
                         }}
-                        color="success"
-                        badgeContent={<Typography variant="body2">+</Typography>}
+                        // color="success"
+                        badgeContent={
+                            <Typography variant="body2" sx={{backgroundColor: "var(--green-color)",
+                                borderRadius: "100px", paddingX: "5px", color: "var(--primary-color)", fontWeight: "500"}}>
+                                +
+                            </Typography>
+                        }
                     >
                         <Avatar src="ronald_logo.png" sx={{ width: 45, height: 42 }} />
                     </Badge>
                 </IconButton>
                 <Typography color="var(--secondary-color)" align="center" aria-label="Descripcion">
-                    Add project
+                    New project
                 </Typography>
             </Stack>
 
@@ -101,7 +106,7 @@ const Histories = () => {
                             <Close fontSize="small" sx={{ color: 'var(--secondary-color)' }} />
                         </Button>
                         <IconButton href={'#' + p.projectId}>
-                            <Avatar src={p.imagen.data} sx={{ width: 52, height: 50, border: "3px solid #22FF0C" }} />
+                            <Avatar src={p.imagen.data} sx={{ width: 52, height: 50, border: "3px solid var(--green-color)" }} />
                         </IconButton>
                         <Typography variant="subtitle1" color="var(--secondary-color)" align="center" aria-label="Descripcion">
                             Project {index+1}

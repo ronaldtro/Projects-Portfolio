@@ -120,10 +120,12 @@ const handleModalMessage = (e: any) => {
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 return (
-    <Card id={proyecto.projectId} sx={{ bgcolor: "var(--secondary-color)" }}>
+    <Card id={proyecto.projectId} sx={{ bgcolor: "var(--secondary-color)",
+        borderBottom: "1px var(--primary-color) solid" }}>
+
         <CardHeader
             avatar={
-                <Avatar src="ronald_logo.png" sx={{ bgcolor: 'success' }} aria-label="icon">
+                <Avatar src={proyecto.imagen.data} sx={{ bgcolor: 'success' }} aria-label="icon">
                 </Avatar>
             }
             action={
@@ -133,8 +135,9 @@ return (
             }
             title={<Typography variant="body1" color="black">{proyecto.nombre}</Typography>}
             subheader={<Typography variant="body2" color="black">{proyecto.fecha}</Typography>}
-            sx={{ color: "var(--primary-color)" }}
+            sx={{ color: "var(--primary-color)", backgroundColor: "var(--green-color)", marginBottom: "50px" }}
         />
+
         <CardMedia
             component="img"
             height="auto"
@@ -168,12 +171,12 @@ return (
                 expand={expanded}
                 onClick={handleExpandClick}
                 aria-expanded={expanded}
-                aria-label="show more"
+                
             >
-                <Typography variant="body2" color="black">
-                    Tech stack
+                <Typography variant="body2" color="var(--primary-color)" >
+                    Tech stack 
                 </Typography>
-                <ExpandMoreIcon sx={{color: 'var(--secondary-color)'}} />
+                <ExpandMoreIcon />
             </ExpandMore>
             {/* <IconButton>
                 <BookmarkBorderIcon sx={{ color: "var(--secondary-color)" }} />
@@ -181,8 +184,8 @@ return (
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-                <Typography color="black" paragraph>
-                    {proyecto.stack}
+                <Typography paragraph>
+                ✅ {proyecto.stack}
                 </Typography>
             </CardContent>
         </Collapse>
