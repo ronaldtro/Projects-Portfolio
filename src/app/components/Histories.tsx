@@ -113,7 +113,7 @@ const Histories = () => {
                         </Typography>
                     </Stack>
                 )) : <Stack sx={{ width: "auto" }}>
-                    <CircularProgress color="primary" />
+                    <CircularProgress sx={{color: "var(--green-color)"}} />
                 </Stack>}
             </Stack>
         </Box>
