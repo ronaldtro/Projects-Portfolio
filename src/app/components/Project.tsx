@@ -133,7 +133,7 @@ return (
                     {/* <MoreVertIcon sx={{ color: "var(--secondary-color)" }} /> */}
                 </IconButton>
             }
-            title={<Typography variant="body1" color="black">{proyecto.nombre}</Typography>}
+            title={<Typography variant="body2" color="black">{proyecto.nombre.toUpperCase()}</Typography>}
             subheader={<Typography variant="body2" color="black">{proyecto.fecha}</Typography>}
             sx={{ color: "var(--primary-color)", backgroundColor: "var(--green-color)", marginBottom: "50px" }}
         />
@@ -155,12 +155,12 @@ return (
 
             <Stack direction="row" gap={0.7} justifyContent="center" alignItems="center">
                 <Checkbox {...label} 
-                    icon={<FavoriteBorderIcon sx={{ color: "var(--secondary-color)" }} />}
+                    icon={<FavoriteBorderIcon sx={{ color: "var(--primary-color)" }} />}
                     onChange={handleLike} checked={checkFavorite}
-                    checkedIcon={<FavoriteIcon sx={{ color: "var(--secondary-color)" }} />} 
+                    checkedIcon={<FavoriteIcon sx={{ color: "var(--primary-color)" }} />} 
                 />
                 <IconButton onClick={handleModalMessage} aria-label="sendMessage">
-                    <ForumIcon sx={{ color: "var(--secondary-color)" }} />
+                    <ForumIcon sx={{ color: "var(--primary-color)" }} />
                 </IconButton>
                 {/* <IconButton href="https://www.instagram.com/ronald.jsx/" aria-label="Share">
                     <SendIcon sx={{ color: "var(--secondary-color)" }} />
@@ -185,7 +185,7 @@ return (
         <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
                 <Typography paragraph>
-                ✅ {proyecto.stack}
+                📦 {proyecto.stack}
                 </Typography>
             </CardContent>
         </Collapse>
